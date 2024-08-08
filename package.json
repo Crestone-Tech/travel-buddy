@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
-
+  },
+  "dependencies": {
+    "@vitejs/plugin-react-swc": "^3.7.0"
   }
 }
