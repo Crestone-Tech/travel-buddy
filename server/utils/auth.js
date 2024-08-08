@@ -33,4 +33,11 @@ module.exports = {
     // next middleware
     next();
   },
+  // sign token function
+  signToken: function ({ username, email, _id }) {
+    const payload = { username, email, _id };
+
+    // return jwt token with payload, secret, and expiration
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  },
 };
