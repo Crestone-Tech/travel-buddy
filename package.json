@@ -2,7 +2,6 @@
   "name": "travel-buddy",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "start": "node server/server.js --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
@@ -14,6 +13,7 @@
     "concurrently": "^8.2.2"
   },
   "dependencies": {
-    "@vitejs/plugin-react-swc": "^3.7.0"
+    "@apollo/server": "^4.11.0",
+    "graphql": "^16.9.0"
   }
 }
