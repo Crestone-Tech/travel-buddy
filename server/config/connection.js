@@ -1,5 +1,4 @@
 // PURPOSE: Establish connection to the database
-
 const mongoose = require("mongoose");
 
 // Connect to the database
