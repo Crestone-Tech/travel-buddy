@@ -1,18 +1,15 @@
-//const { User } = require("../models");
+const { User } = require("../models");
 
 const resolvers = {
   Query: {
-    user: async () => {
-      //const matchup = await Matchup.create(args);
-      console.log("call to Resolvers.createUser()");
-      return null;
+    users: async (parent, { _id }) => {
+      return User.find({});
     },
   },
   Mutation: {
-    createUser: async (parent, args) => {
-      //const matchup = await Matchup.create(args);
-      console.log("call to Resolvers.createUser()");
-      return null;
+    createUser: async (_, { name, email }) => {
+      const newUser = await User.create({ name });
+      return newUser;
     },
   },
 };
