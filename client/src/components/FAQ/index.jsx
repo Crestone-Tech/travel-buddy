@@ -12,7 +12,15 @@ export default function FAQ() {
   ];
   return (
     <div>
-      <h2> Frequently Asked Questions</h2>
+      <h2>Frequently Asked Questions</h2>
+      <ul>
+        {questions.map((item, index) => (
+          <li key={index}>
+            <strong>{item.question}</strong>
+            <p>{item.answer}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
