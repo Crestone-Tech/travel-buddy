@@ -13,3 +13,11 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+
+const startApolloServer = async() => {
+    await server.start();
+
+    app.use(express.urlencoded({extended: true}));
+}
+
+startApolloServer();
