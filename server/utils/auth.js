@@ -1,7 +1,9 @@
-// PURPOSE: authentication middleware
+// PURPOSE: server authentication middleware
 
+// REQs
 const jwt = require("jsonwebtoken");
 
+// CONSTs
 const secret = "secret_travel_buddy"; // secret key
 const expiration = "2h"; // 2 hours
 
