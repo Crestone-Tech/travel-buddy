@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Envision />,
+        element: <Buddy />,
       },
       {
         path: '/plan',
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/tribes',
         element: <Tribes />,
+      },
+      {
+        path: '/envision',
+        element: <Envision />,
       },
     ],
   }
