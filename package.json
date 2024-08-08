@@ -11,10 +11,5 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
-  },
-  "dependencies": {
-    "@apollo/server": "^4.11.0",
-    "@vitejs/plugin-react-swc": "^3.7.0",
-    "graphql": "^16.9.0"
   }
 }
