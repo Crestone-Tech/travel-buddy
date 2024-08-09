@@ -1,16 +1,19 @@
 const typeDefs = `
-  type User {
-    _id: ID!
+type User {
+    id: ID!
     name: String!
     email: String!
+    password: String!
   }
 
   type Query {
-    users: [User]
+  users: [User]  
+  
   }
 
   type Mutation {
-    createUser(name: String!, email: String!): User
+    createUser(name: String!, email: String!, password: String!): User
+    
   }
 `;
 
