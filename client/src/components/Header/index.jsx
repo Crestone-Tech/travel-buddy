@@ -16,11 +16,11 @@ export default function Header(props) {
           </li>
           <li>
             <i className="fas fa-sign-in-alt"></i>
-            <a href="#login">Login</a>
+            <a href="/login">Login</a>
           </li>
           <li>
             <i className="fas fa-user-plus"></i>
-            <a href="#signup">Signup</a>
+            <a href="/signup">Signup</a>
           </li>
         </ul>
       </nav>
