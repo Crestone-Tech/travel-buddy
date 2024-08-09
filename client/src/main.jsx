@@ -26,6 +26,10 @@ const router = createBrowserRouter([
         path: '/envision',
         element: <Envision />,
       },
+      {
+        path: '/login',
+        element: <Login />,
+      },
     ],
   }
 ])
