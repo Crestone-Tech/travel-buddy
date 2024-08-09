@@ -42,9 +42,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header>
-            <NavBar />
-          </Header>
+          <Header />
+          <NavBar />
 
           <main>
             <Outlet />
