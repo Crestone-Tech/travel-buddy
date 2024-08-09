@@ -7,6 +7,7 @@ import Plan from "./pages/Plan"
 import Tribes from "./pages/Tribes"
 import Envision from "./pages/Envision"
 import Homepage from "./pages/Homepage"
+import Signup from "./components/Signup"
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/buddy',
         element: <Buddy />,
+      },
+      {
+        path: '/signup',
+        element: <Signup />,
       },
     ],
   }
