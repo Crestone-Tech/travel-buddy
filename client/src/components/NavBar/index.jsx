@@ -24,3 +24,23 @@ export default function NavBar() {
     { label: "Sign Up", path: "/signup" }, // change to buddy
   ];
 }
+
+const toggleDrawer = () => setOpen(!open);
+
+const drawerList = (
+  <Box sx={{ width: 250 }}>
+    <List>
+      {navItems.map((item) => (
+        <ListItem
+          button
+          key={item.label}
+          component={Link}
+          to={item.path}
+          onClick={toggleDrawer}
+        >
+          <ListItemText primary={item.label} />
+        </ListItem>
+      ))}
+    </List>
+  </Box>
+);
