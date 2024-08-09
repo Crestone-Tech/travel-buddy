@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #010041;
+  color: white;
+  padding: 2rem;
+  width: 100%;
+}
+.nav {
+  margin-right: 200px;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+}
+.nav-list i {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+}
+.nav-list a {
+  color: white;
+  text-decoration: none;
+}
+.nav-list a:hover {
+  text-decoration: underline;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
