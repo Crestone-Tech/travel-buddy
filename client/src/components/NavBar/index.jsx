@@ -44,7 +44,7 @@ export default function NavBar() {
           My Tribes
         </Link>
       </li>
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <Link
           to="/Buddy"
           className={currentPage === "Buddy" ? "nav-link active" : "nav link"}
@@ -60,6 +60,15 @@ export default function NavBar() {
         >
           {" "}
           Premium
+        </Link>
+      </li> */}
+      <li className="nav-item">
+        <Link
+          to="/signup"
+          className={currentPage === "Signup" ? "nav-link active" : "nav-link"}
+        >
+          {" "}
+          Sign Up
         </Link>
       </li>
     </ul>

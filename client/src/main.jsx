@@ -2,6 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import Buddy from "./pages/Buddy"
+import Plan from "./pages/Plan"
+import Tribes from "./pages/Tribes"
+import Envision from "./pages/Envision"
+import Homepage from "./pages/Homepage"
+import Signup from "./components/Signup"
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
@@ -12,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Buddy />,
+        element: <Homepage />,
       },
       {
         path: '/plan',
@@ -27,8 +33,12 @@ const router = createBrowserRouter([
         element: <Envision />,
       },
       {
-        path: '/login',
-        element: <Login />,
+        path: '/buddy',
+        element: <Buddy />,
+      },
+      {
+        path: '/signup',
+        element: <Signup />,
       },
     ],
   }

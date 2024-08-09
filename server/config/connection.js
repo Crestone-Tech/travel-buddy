@@ -1,7 +1,7 @@
-// PURPOSE: Establish connection to the database
 const mongoose = require("mongoose");
 
-// Connect to the database
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/travel-buddy");
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/travel-buddy"
+);
 
 module.exports = mongoose.connection;
