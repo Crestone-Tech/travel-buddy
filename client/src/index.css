@@ -1,9 +1,28 @@
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #010041;
   color: white;
   padding: 2rem;
   width: 100%;
 }
+.nav {
+  margin-right: 200px;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav-list a {
+  color: white;
+  text-decoration: none;
+}
+.nav-list a:hover {
+  text-decoration: underline;
+}
+
 html,
 body {
   margin: 0;
