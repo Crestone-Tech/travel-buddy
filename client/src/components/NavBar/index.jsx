@@ -23,24 +23,83 @@ export default function NavBar() {
     { label: "My Tribes", path: "/Tribes" },
     { label: "Sign Up", path: "/signup" }, // change to buddy
   ];
-}
 
-const toggleDrawer = () => setOpen(!open);
+  const toggleDrawer = () => setOpen(!open);
 
-const drawerList = (
-  <Box sx={{ width: 250 }}>
-    <List>
-      {navItems.map((item) => (
-        <ListItem
-          button
-          key={item.label}
-          component={Link}
-          to={item.path}
-          onClick={toggleDrawer}
+  const drawerList = (
+    <Box sx={{ width: 250 }}>
+      <List>
+        {navItems.map((item) => (
+          <ListItem
+            button
+            key={item.label}
+            component={Link}
+            to={item.path}
+            onClick={toggleDrawer}
+          >
+            <ListItemText primary={item.label} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
+  return (
+    <>
+      <AppBar position="static" sx={{ backgroundColor: "#D9D9D9" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: { xs: "space-between", md: "center" },
+          }}
         >
-          <ListItemText primary={item.label} />
-        </ListItem>
-      ))}
-    </List>
-  </Box>
-);
+          <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
+            Travel Buddy
+          </Typography>
+          <Box
+            sx={{
+              display: { xs: "none", md: "flex" },
+              flexGrow: 1,
+              justifyContent: "center",
+            }}
+          >
+            {navItems.map((item) => (
+              <Button
+                key={item.label}
+                color="inherit"
+                component={Link}
+                to={item.path}
+                sx={{
+                  color: location.pathname === item.path ? "gray" : "black",
+                  borderBottom:
+                    location.pathname === item.path
+                      ? "2px solid black"
+                      : "none",
+                  margin: "0 20px",
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                  },
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+          <IconButton
+            color="inherit"
+            edge="end"
+            sx={{ display: { xs: "block", md: "none" } }}
+            onClick={toggleDrawer}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      <Drawer anchor="right" open={open} onClose={toggleDrawer}>
+        {drawerList}
+      </Drawer>
+    </>
+  );
+}
