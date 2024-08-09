@@ -1,6 +1,7 @@
 // PURPOSE: server authentication middleware
 
 // REQs
+const { GraphQLError } = require("graphql");
 const jwt = require("jsonwebtoken");
 
 // CONSTs
