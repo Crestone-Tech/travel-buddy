@@ -62,6 +62,15 @@ export default function NavBar() {
           Premium
         </Link>
       </li> */}
+      <li className="nav-item">
+        <Link
+          to="/signup"
+          className={currentPage === "Signup" ? "nav-link active" : "nav-link"}
+        >
+          {" "}
+          Sign Up
+        </Link>
+      </li>
     </ul>
   );
 }
