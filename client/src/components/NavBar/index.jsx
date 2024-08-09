@@ -11,3 +11,16 @@ import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
+
+export default function NavBar() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const navItems = [
+    { label: "Home", path: "/" },
+    { label: "Envision", path: "/Envision" },
+    { label: "Plan", path: "/Plan" },
+    { label: "My Tribes", path: "/Tribes" },
+    { label: "Sign Up", path: "/signup" }, // change to buddy
+  ];
+}
