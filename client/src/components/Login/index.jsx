@@ -10,7 +10,7 @@ const Login = () => {
           <input
             type="text"
             id="username"
-            value={username}
+            // value={username}
           />
         </div>
         <div>
@@ -18,7 +18,7 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            value={password}
+            // value={password}
           />
         </div>
         <button type="submit">Login</button>
