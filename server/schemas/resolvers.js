@@ -7,8 +7,8 @@ const resolvers = {
     },
   },
   Mutation: {
-    createUser: async (_, { name, email }) => {
-      const newUser = await User.create({ name });
+    createUser: async (_, { name, email, password }) => {
+      const newUser = await User.create({ name, email, password });
       return newUser;
     },
   },
