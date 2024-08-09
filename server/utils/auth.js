@@ -8,6 +8,13 @@ const secret = "secret_travel_buddy"; // secret key
 const expiration = "2h"; // 2 hours
 
 module.exports = {
+  // error message for authentication
+  AuthenticationError: new GraphQLError("Unable to authenticate user...", {
+    extensions: {
+      code: "UNAUTHENTICATED",
+    },
+  }),
+
   // auth middleware function
   authMiddleware: function (req, res, next) {
     // token sending in req query or headers
