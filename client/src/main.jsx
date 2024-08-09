@@ -1,18 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import Buddy from "./pages/Buddy"
-import Plan from "./pages/Plan"
-import Tribes from "./pages/Tribes"
-import Envision from "./pages/Envision"
-import Homepage from "./pages/Homepage"
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import Buddy from "./pages/Buddy";
+import Plan from "./pages/Plan";
+import Tribes from "./pages/Tribes";
+import Envision from "./pages/Envision";
+import Homepage from "./pages/Homepage";
+import UserDetails from "./components/UserDetails";
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
@@ -20,27 +21,31 @@ const router = createBrowserRouter([
         element: <Homepage />,
       },
       {
-        path: '/plan',
+        path: "/plan",
         element: <Plan />,
       },
       {
-        path: '/tribes',
+        path: "/tribes",
         element: <Tribes />,
       },
       {
-        path: '/envision',
+        path: "/envision",
         element: <Envision />,
       },
       {
-        path: '/buddy',
+        path: "/buddy",
         element: <Buddy />,
       },
+      {
+        path: "/userDetails",
+        element: <UserDetails />,
+      },
     ],
-  }
-])
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
-)
+);
