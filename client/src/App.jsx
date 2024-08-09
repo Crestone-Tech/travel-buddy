@@ -7,10 +7,13 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-
+import Hero from "./components/Hero";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+
+// used to add themes for MUI
+const theme = createTheme();
 
 // used to connect to the GraphQL API server
 const httpLink = createHttpLink({
@@ -44,7 +47,7 @@ function App() {
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <NavBar />
-
+          <Hero />
           <main>
             <Outlet />
           </main>
