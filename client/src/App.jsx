@@ -11,6 +11,7 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 // used to add themes for MUI
 const theme = createTheme();
