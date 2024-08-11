@@ -7,10 +7,14 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-
+import Hero from "./components/Hero";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+
+// used to add themes for MUI
+const theme = createTheme();
 
 // used to connect to the GraphQL API server
 const httpLink = createHttpLink({
@@ -39,16 +43,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
           <NavBar />
-        </Header>
-
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
+          <Hero />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
