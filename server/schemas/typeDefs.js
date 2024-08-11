@@ -20,6 +20,10 @@ const dateScalar = new GraphQLScalarType({
 const typeDefs = `
   scalar Date
 
+  type ResponseFromDeletion {
+  acknowledged: Boolean,
+  deletedCount: Int}
+
   type User {
     id: ID!
     name: String!
@@ -46,6 +50,8 @@ const typeDefs = `
     user: User
   }
 
+  
+
   type Query {
   getAllReservations: [Reservation]
   getOneReservation(_id: ID!): Reservation
@@ -56,7 +62,6 @@ const typeDefs = `
   }
 
   type Mutation {
-    createUser(name: String!, email: String!, password: String!): Auth
     createReservation(
       title: String!, 
       category: String!, 
@@ -69,8 +74,25 @@ const typeDefs = `
       price: Float, 
       priceCurrency: String
     ): Reservation
-    deleteReservation(_id: ID!): Reservation
     
+    updateReservation(
+      _id: ID!,
+      title: String!, 
+      category: String!, 
+      description: String, 
+      startDate: Date, 
+      endDate: Date, 
+      status: String, 
+      provider: String, 
+      transportationType: String, 
+      price: Float, 
+      priceCurrency: String
+    ): Reservation
+    
+    deleteReservation(_id: ID!): ResponseFromDeletion
+    
+    
+    createUser(name: String!, email: String!, password: String!): Auth
     removeUser: User
     login(email: String!, password: String!): Auth
   }

@@ -1,4 +1,5 @@
 const { User, Reservation } = require("../models");
+const { findByIdAndUpdate } = require("../models/Reservation");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const { ObjectId } = require("mongodb");
 
@@ -39,14 +40,52 @@ const resolvers = {
 
   Mutation: {
     ////////////// RESERVATIONS
+    //creates a reservation. See Model for required fields.
     createReservation: async (parent, args) => {
       const reservation = await Reservation.create(args);
       return reservation;
     },
+    
+    // updates any/all fields in a reservation (except for _id)
+    updateReservation: async (parent, args) => {
+      try {
+        if (!args._id) {
+          throw new Error("Reservation ID is required");
+        }
+        const reservation = await Reservation.findByIdAndUpdate(
+          args._id,
+          args,
+          {
+            new: true,
+          }
+        );
+        if (!reservation) {
+          throw new Error("Reservation not found");
+        }
+        return reservation;
+      } catch (error) {
+        console.error("Error updating reservation:", error);
+        throw new Error("Failed to update reservation");
+      }
+    },
 
-    deleteReservation: async (parent, {_id}) => {
-      const reservation = await Reservation.deleteOne({ _id})
-      return reservation;
+    // deletes a reservation. 
+    // Returns 
+    //  1: reseration deleted
+    //  0: reservation not found, not deleted
+    deleteReservation: async (parent, { _id }) => {
+      try {
+        if (!_id) {
+          throw new Error("Reservation ID is required");
+        }
+        const result = await Reservation.deleteOne({ _id });
+        console.log("result", result);
+
+        return result;
+      } catch (error) {
+        console.error("Error deleting reservation:", error);
+        throw new Error("Failed to delete reservation");
+      }
     },
 
     //////////////////// USERS AND AUTH
