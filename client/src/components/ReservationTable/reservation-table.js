@@ -11,7 +11,10 @@ for (reservation of document.querySelectorAll(".lodging"))
   reservation.children[0].children[0].classList.add("fa-bed");
 
 for (reservation of document.querySelectorAll(".diving"))
-    reservation.children[0].children[0].classList.add("fa-fish");
+  reservation.children[0].children[0].classList.add("fa-fish");
 
 for (reservation of document.querySelectorAll(".free"))
-  reservation.children[0].children[0].classList.add("fa-solid", "fa-face-smile");
+  reservation.children[0].children[0].classList.add(
+    "fa-solid",
+    "fa-face-smile"
+  );
