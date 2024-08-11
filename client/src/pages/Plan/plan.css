@@ -1,0 +1,15 @@
+table {
+  background-color: skyblue;
+}
+
+tr {
+  background-color: whitesmoke;
+}
+
+td {
+  padding: 4px;
+}
+
+.foo {
+  color: aqua;
+}
