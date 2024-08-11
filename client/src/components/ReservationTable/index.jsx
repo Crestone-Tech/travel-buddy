@@ -1,4 +1,5 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
 import "./reservation-table.css";
 import { useEffect } from "react";
 
@@ -13,6 +14,8 @@ export default function ReservationTable() {
       document.body.removeChild(script);
     };
   }, []);
+
+  const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
 
   return (
     <div>
