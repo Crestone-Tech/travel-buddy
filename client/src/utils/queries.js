@@ -2,6 +2,7 @@
 
 import { gql } from "@apollo/client";
 
+///////////// USERS ///////////
 // QUERY_USERS query
 export const QUERY_USERS = gql`
   query users {
@@ -31,6 +32,18 @@ export const QUERY_ME = gql`
       _id
       username
       email
+    }
+  }
+`;
+
+///////// RESERVATIONS ///////////
+// QUERY_ALL_RESERVATIONS
+export const QUERY_ALL_RESERVATIONS = gql`
+  query getAllReservations {
+    reservations {
+      _id
+      title
+      status
     }
   }
 `;
