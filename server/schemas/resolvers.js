@@ -1,8 +1,14 @@
-const { User } = require("../models");
+const { User, Reservation } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    ////////////////// RESERVATIONS
+    // get all reservations
+    getAllReservations: async () => {
+      return Reservation.find();
+    },
+
     // get all users
     users: async () => {
       return User.find();
@@ -23,6 +29,12 @@ const resolvers = {
   },
 
   Mutation: {
+    createReservation: async (parent, args) => {
+      const reservation = await Reservation.create(args);
+
+      return { reservation };
+    },
+
     createUser: async (parent, { name, email, password }) => {
       const user = await User.create({ name, email, password });
       const token = signToken(user);

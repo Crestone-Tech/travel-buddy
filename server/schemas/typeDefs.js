@@ -47,7 +47,7 @@ const typeDefs = `
   }
 
   type Query {
-  reservation(_id: ID!): Reservation
+  getAllReservations: [Reservation]
   users: [User]
   user(_id: ID!): User
   me: User
@@ -55,6 +55,19 @@ const typeDefs = `
 
   type Mutation {
     createUser(name: String!, email: String!, password: String!): Auth
+    createReservation(
+      title: String!, 
+      category: String!, 
+      description: String, 
+      startDate: Date, 
+      endDate: Date, 
+      status: String, 
+      provider: String, 
+      transportationType: String, 
+      price: Float, 
+      priceCurrency: String
+
+    ): Reservation
     removeUser: User
     login(email: String!, password: String!): Auth
   }

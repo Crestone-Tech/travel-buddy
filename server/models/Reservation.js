@@ -29,10 +29,10 @@ const reservationSchema = new Schema({
     type: String,
   },
   price: {
-    type: Num,
+    type: Number,
   },
   priceCurrency: {
-    type: Number,
+    type: String,
   },
 });
 
