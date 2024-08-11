@@ -68,8 +68,8 @@ const typeDefs = `
       transportationType: String, 
       price: Float, 
       priceCurrency: String
-
     ): Reservation
+    deleteReservation(_id: ID!): Reservation
     
     removeUser: User
     login(email: String!, password: String!): Auth

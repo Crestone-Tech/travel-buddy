@@ -44,6 +44,11 @@ const resolvers = {
       return reservation;
     },
 
+    deleteReservation: async (parent, {_id}) => {
+      const reservation = await Reservation.deleteOne({ _id})
+      return reservation;
+    },
+
     //////////////////// USERS AND AUTH
     createUser: async (parent, { name, email, password }) => {
       const user = await User.create({ name, email, password });
