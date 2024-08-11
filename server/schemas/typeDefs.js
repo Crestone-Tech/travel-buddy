@@ -48,6 +48,8 @@ const typeDefs = `
 
   type Query {
   getAllReservations: [Reservation]
+  getOneReservation(_id: ID!): Reservation
+
   users: [User]
   user(_id: ID!): User
   me: User
@@ -68,6 +70,7 @@ const typeDefs = `
       priceCurrency: String
 
     ): Reservation
+    
     removeUser: User
     login(email: String!, password: String!): Auth
   }
