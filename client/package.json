@@ -29,7 +29,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material": "^5.16.7",
-    "@rollup/rollup-darwin-arm64": "^4.20.0",
+    "@rollup/rollup-win32-x64-msvc": "^4.20.0",
     "@tldraw/assets": "^2.4.4",
     "graphql": "^16.9.0",
     "react": "^18.3.1",
