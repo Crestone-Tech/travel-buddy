@@ -28,6 +28,7 @@ export default function Login() {
 
     try {
       // login
+      console.log("formData", formData);
       const { data } = await loginUser({
         variables: {
           username: formData.username.trim().toLowerCase(),
@@ -43,69 +44,69 @@ export default function Login() {
         console.log("error:", error);
       }
     }
-
-    return (
-      <div className="login-container relative min-h-screen flex items-center justify-center px-4 px-8">
-        <form onSubmit={handleFormSubmit} className="relative w-full mt-8 mb-8">
-          <h2 className="text-4xl font-bold text-center">Login</h2>
-          {formErrorMessage && (
-            <div className="text-red-500 text-center">{formErrorMessage}</div>
-          )}
-          // Username
-          <label htmlFor="username" className="flex flex-col gap-2 w-full mb-4">
-            <span className="text-sm font-medium">Username</span>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              value={formData.username}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  username: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          // Password
-          <label htmlFor="password" className="flex flex-col gap-2 w-full mb-4">
-            <span className="text-sm font-medium">Password</span>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  password: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          <div className="flex flex-col gap-4 w-full">
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 rounded-md"
-            >
-              Login
-            </button>
-            <button
-              type="button"
-              onClick={clearForm}
-              className="bg-gray-500 text-white py-2 rounded-md"
-            >
-              Clear
-            </button>
-          </div>
-        </form>
-      </div>
-    );
   };
+
+  return (
+    <div className="login-container relative min-h-screen flex justify-center px-12">
+      <form onSubmit={handleFormSubmit} className="relative w-full mt-8 mb-8">
+        <h2 className="text-4xl font-bold text-center">Login</h2>
+        {formErrorMessage && (
+          <div className="text-red-500 text-center">{formErrorMessage}</div>
+        )}
+        <label htmlFor="username" className="flex flex-col gap-2 w-full mb-4">
+          <span className="text-sm font-bold">Username</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            value={formData.username}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                username: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <label htmlFor="password" className="flex flex-col gap-2 w-full mb-4">
+          <span className="text-sm font-bold">Password</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                password: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <div className="flex flex-col gap-4 w-full">
+          <button
+            type="submit"
+            className="bg-blue-950 text-white py-2 rounded-md"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            onClick={clearForm}
+            className="bg-gray-300 text-white py-2 rounded-md"
+          >
+            Clear
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 // export default function Login() {

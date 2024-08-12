@@ -1,5 +1,8 @@
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const resolvers = {
   Query: {
@@ -23,41 +26,51 @@ const resolvers = {
   },
 
   Mutation: {
-    createUser: async (parent, { name, email, password }) => {
-      const user = await User.create({ name, email, password });
-      const token = signToken(user);
+    addUser: async (parent, args) => {
+      try {
+        const { firstName, lastName, username, email, password } = args;
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-      return { token, user };
+        const user = new User({
+          firstName,
+          lastName,
+          username,
+          email,
+          password: hashedPassword,
+        });
+
+        await user.save();
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+
+        return { token, user };
+      } catch (error) {
+        console.log(error);
+
+        return error;
+      }
     },
 
-    login: async (parent, { email, password }) => {
-      // find user by email
-      const user = await User.findOne({ email });
+    loginUser: async (parent, { username, password }) => {
+      try {
+        const user = await User.findOne({ username });
 
-      // if no user found, return error
-      if (!user) {
-        throw AuthenticationError;
+        if (!user) {
+          throw new Error("No user with that username");
+        }
+
+        const valid = await bcrypt.compare(password, user.password);
+
+        if (!valid) {
+          throw new Error("Incorrect password");
+        }
+
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+
+        return { token, user };
+      } catch (error) {
+        console.log(error);
       }
-
-      // check if password is correct
-      const correctPw = await user.isCorrectPassword(password);
-
-      // if password is incorrect, return error
-      if (!correctPw) {
-        throw AuthenticationError;
-      }
-
-      // sign token
-      const token = signToken(user);
-
-      return { token, user };
-    },
-
-    removeUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
-      }
-      throw AuthenticationError;
     },
   },
 };

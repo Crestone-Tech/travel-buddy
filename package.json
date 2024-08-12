@@ -10,12 +10,13 @@
     "build": "cd client && npm run build"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
     "concurrently": "^8.2.2"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@swc/core": "^1.7.6",
     "@vitejs/plugin-react-swc": "^3.7.0",
-    "jsonwebtoken": "^9.0.2",
-    "@fortawesome/fontawesome-free": "^6.6.0"
+    "jwt-decode": "^4.0.0"
   }
 }

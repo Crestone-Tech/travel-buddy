@@ -10,6 +10,7 @@ export default function Signup() {
     firstName: "",
     lastName: "",
     username: "",
+    email: "",
     password: "",
     confirmPassword: "",
   });
@@ -23,6 +24,7 @@ export default function Signup() {
       firstName: "",
       lastName: "",
       username: "",
+      email: "",
       password: "",
       confirmPassword: "",
     });
@@ -69,134 +71,126 @@ export default function Signup() {
         console.error("error:", error);
       }
     }
-
-    return (
-      <div className="signup-container relative min-h-screen flex items-center justify-center px-4 px-8">
-        <form onSubmit={handleFormSubmit} className="relative w-full mt-8 mb-8">
-          <h2 className="text-4xl font-bold text-center">Sign up</h2>
-          {formErrorMessage && (
-            <div className="text-red-500 text-center">{formErrorMessage}</div>
-          )}
-          // First Name
-          <label
-            htmlFor="firstName"
-            className="flex flex-col gap-2 w-full mb-4"
-          >
-            <span className="text-sm font-medium">First Name</span>
-            <input
-              className="w-full px-4 py-2 text-sm"
-              type="text"
-              id="firstName"
-              name="firstName"
-              placeholder="Enter your first name"
-              value={formData.firstName}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  firstName: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          // Last Name
-          <label htmlFor="lastName" className="flex flex-col gap-2 w-full mb-4">
-            <span className="text-sm font-medium">Last Name</span>
-            <input
-              className="w-full px-4 py-2 text-sm"
-              type="text"
-              id="lastName"
-              name="lastName"
-              placeholder="Enter your last name"
-              value={formData.lastName}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  lastName: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          // Username
-          <label htmlFor="username" className="flex flex-col gap-2 w-full mb-4">
-            <span className="text-sm font-medium">Username</span>
-            <input
-              className="w-full px-4 py-2 text-sm"
-              type="text"
-              id="username"
-              name="username"
-              placeholder="Enter your username"
-              value={formData.username}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  username: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          // Password
-          <label htmlFor="password" className="flex flex-col gap-2 w-full mb-4">
-            <span className="text-sm font-medium">Password</span>
-            <input
-              className="w-full px-4 py-2 text-sm"
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  password: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          // Confirm Password
-          <label
-            htmlFor="confirmPassword"
-            className="flex flex-col gap-2 w-full mb-4"
-          >
-            <span className="text-sm font-medium">Confirm Password</span>
-            <input
-              className="w-full px-4 py-2 text-sm"
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm your password"
-              value={formData.confirmPassword}
-              onChange={(event) =>
-                setFormData((prev) => ({
-                  ...prev,
-                  confirmPassword: event.target.value,
-                }))
-              }
-              required
-            />
-          </label>
-          <div className="flex flex-col gap-4 w-full">
-            <button
-              type="submit"
-              className="bg-blue-500 text-white py-2 rounded-md"
-            >
-              Sign up
-            </button>
-            <button
-              type="button"
-              onClick={clearForm}
-              className="bg-gray-500 text-white py-2 rounded-md"
-            >
-              Clear
-            </button>
-          </div>
-        </form>
-      </div>
-    );
   };
+
+  return (
+    <div className="signup-container relative min-h-screen flex justify-center px-12">
+      <form onSubmit={handleFormSubmit} className="relative w-full mt-8 mb-8">
+        <h2 className="text-4xl font-bold text-center">Sign up</h2>
+        {formErrorMessage && (
+          <div className="text-red-500 text-center">{formErrorMessage}</div>
+        )}
+        <label htmlFor="firstName" className="flex flex-col gap-2 w-full mb-4">
+          <span className="text-sm font-bold">First Name</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="text"
+            id="firstName"
+            name="firstName"
+            placeholder="Enter your first name"
+            value={formData.firstName}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                firstName: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <label htmlFor="lastName" className="flex flex-col gap-2 w-full mb-4">
+          <span className="text-sm font-bold">Last Name</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="text"
+            id="lastName"
+            name="lastName"
+            placeholder="Enter your last name"
+            value={formData.lastName}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                lastName: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <label htmlFor="username" className="flex flex-col gap-2 w-full mb-4">
+          <span className="text-sm font-bold">Username</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter your username"
+            value={formData.username}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                username: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <label htmlFor="password" className="flex flex-col gap-2 w-full mb-4">
+          <span className="text-sm font-bold">Password</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            value={formData.password}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                password: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <label
+          htmlFor="confirmPassword"
+          className="flex flex-col gap-2 w-full mb-4"
+        >
+          <span className="text-sm font-bold">Confirm Password</span>
+          <input
+            className="w-full px-2 py-2 text-sm"
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            value={formData.confirmPassword}
+            onChange={(event) =>
+              setFormData((prev) => ({
+                ...prev,
+                confirmPassword: event.target.value,
+              }))
+            }
+            required
+          />
+        </label>
+        <div className="flex flex-col gap-4 w-full">
+          <button
+            type="submit"
+            className="bg-blue-950 text-white py-2 rounded-md"
+          >
+            Sign up
+          </button>
+          <button
+            type="button"
+            onClick={clearForm}
+            className="bg-gray-400 text-white py-2 rounded-md"
+          >
+            Clear
+          </button>
+        </div>
+      </form>
+    </div>
+  );
 }
 
 // const Signup = () => {
