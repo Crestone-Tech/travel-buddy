@@ -15,7 +15,33 @@ import Plan from "./pages/Plan";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 // used to add themes for MUI
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1976d2",
+    },
+    success: {
+      main: "#4caf50",
+    },
+  },
+  typography: {
+    fontSize: 16,
+    h3: {
+      fontWeight: 700,
+      fontSize: "2.2rem",
+    },
+    h4: {
+      fontWeight: 700,
+      fontSize: "1.75rem",
+    },
+    h5: {
+      fontWeight: 500,
+    },
+    h6: {
+      fontWeight: 500,
+    },
+  },
+});
 
 // used to connect to the GraphQL API server
 const httpLink = createHttpLink({
@@ -44,18 +70,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      {/* <ThemeProvider theme={theme}> */}
-      {/* <CssBaseline /> */}
-      <div className="flex-column justify-flex-start min-100-vh">
-        <Header />
-        {/* <NavBar /> */}
-        <Hero />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </div>
-      {/* </ThemeProvider> */}
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <NavBar />
+          <Hero />
+          <main>
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }
