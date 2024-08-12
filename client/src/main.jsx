@@ -9,8 +9,14 @@ import Envision from "./pages/Envision";
 import Homepage from "./pages/Homepage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+<<<<<<< HEAD
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+=======
+import FAQ from "./components/FAQ";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import "./styles.css";
+>>>>>>> e4e97ccdcb3d71d478eb0286357a7046977b3785
 
 const router = createBrowserRouter([
   {
@@ -44,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/faq",
+        element: <FAQ />,
       },
     ],
   },

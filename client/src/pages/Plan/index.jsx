@@ -1,9 +1,11 @@
 import React from "react";
 
+import ReservationTable from "../../components/ReservationTable";
+
 export default function Plan() {
-    return (
-        <div>
-            Plan Page!
-        </div>
-    )
+  return (
+    <>
+      <ReservationTable />
+    </>
+  );
 }
