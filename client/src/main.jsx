@@ -11,6 +11,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import FAQ from "./components/FAQ";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import "./styles.css";
 
 const router = createBrowserRouter([
   {
