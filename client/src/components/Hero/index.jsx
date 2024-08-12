@@ -1,8 +1,15 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import travelDreams from "../../assets/images/traveldreams.png";
 import cenote from "../../assets/images/cenote.png";
 
 export default function Hero(props) {
+  const location = useLocation();
+
+  if (location.pathname !== "/") {
+    return null;
+  }
+
   return (
     <section className="hero">
       <div className="hero-image-container">

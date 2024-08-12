@@ -14,11 +14,12 @@ header {
   align-items: center;
   background-color: #010041;
   color: white;
-  padding: 2rem;
+  padding: 1px 2rem;
   width: 100%;
+  box-sizing: border-box;
 }
 .nav {
-  margin-right: 200px;
+  margin-right: 100px;
 }
 .nav-list {
   list-style: none;
@@ -52,6 +53,7 @@ body {
 }
 body {
   box-sizing: border-box;
+  padding-bottom: 3rem;
 }
 /* Hero Component */
 
@@ -96,8 +98,10 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: auto;
   text-align: center;
-  padding: 1rem;
+  padding: 1px;
   background-color: #010041;
   color: white;
+  box-sizing: border-box;
 }
