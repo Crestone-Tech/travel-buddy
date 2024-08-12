@@ -1,3 +1,12 @@
+/* TlDraw Styles */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap");
+@import url("tldraw/tldraw.css");
+
+.envisionParent {
+  height: 70vh;
+  width: 100vw;
+}
+
 /* Header Component */
 header {
   display: flex;
