@@ -43,6 +43,7 @@ body {
 }
 body {
   box-sizing: border-box;
+  padding-bottom: 3rem;
 }
 /* Hero Component */
 
@@ -87,8 +88,10 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
+  height: auto; /* Adjust to fit content */
   text-align: center;
-  padding: 1rem;
+  padding: 1px; /* Adjust padding for better fit */
   background-color: #010041;
   color: white;
+  box-sizing: border-box;
 }
