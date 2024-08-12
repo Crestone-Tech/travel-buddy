@@ -46,21 +46,36 @@ export default function NavBar() {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: "#D9D9D9" }}>
+      <AppBar
+        position="static"
+        sx={{ backgroundColor: "#D9D9D9", height: "3rem" }}
+      >
         <Toolbar
           sx={{
+            height: "100%",
+            padding: "0 1rem",
             display: "flex",
             alignItems: "center",
             justifyContent: { xs: "space-between", md: "center" },
+            marginTop: "-0.5rem",
+            padding: { xs: "0 1rem", md: "0 2rem" },
           }}
         >
-          <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
+          <Typography
+            variant="h6"
+            sx={{
+              flexGrow: 1,
+              color: "black",
+              fontSize: "1rem",
+              textAlign: "center",
+            }}
+          >
             Travel Buddy
           </Typography>
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
-              flexGrow: 1,
+              flexGrow: 2,
               justifyContent: "center",
             }}
           >
@@ -89,7 +104,7 @@ export default function NavBar() {
           <IconButton
             color="inherit"
             edge="end"
-            sx={{ display: { xs: "block", md: "none" } }}
+            sx={{ display: { xs: "block", md: "none" }, marginTop: "0.25rem" }}
             onClick={toggleDrawer}
           >
             <MenuIcon />
