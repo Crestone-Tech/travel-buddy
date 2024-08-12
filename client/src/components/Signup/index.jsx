@@ -16,7 +16,6 @@ export default function Signup() {
 
   // GraphQL mutation
   const [addUser] = useMutation(ADD_USER);
-  // const [loginUser] = useMutation(LOGIN_USER);
 
   const clearForm = () => {
     setFormErrorMessage("");
@@ -51,18 +50,6 @@ export default function Signup() {
     }
 
     try {
-      // // login
-      // if (loginAction) {
-      //   const { data } = await loginUser({
-      //     variables: { username: formData.username.trim().toLowerCase(), password: formData.password }
-      //   });
-
-      //   console.log('LOGIN_USER data:', data);
-      //   Auth.login(data.login.token);
-
-      //   return;
-      // }
-
       // signup
       const { data } = await addUser({
         variables: {
@@ -84,7 +71,7 @@ export default function Signup() {
     }
 
     return (
-      <div className="relative min-h-screen flex items-center justify-center px-4 px-8">
+      <div className="signup-container relative min-h-screen flex items-center justify-center px-4 px-8">
         <form onSubmit={handleFormSubmit} className="relative w-full mt-8 mb-8">
           <h2 className="text-4xl font-bold text-center">Sign up</h2>
           {formErrorMessage && (
