@@ -39,11 +39,19 @@ export const QUERY_ME = gql`
 ///////// RESERVATIONS ///////////
 // QUERY_ALL_RESERVATIONS
 export const QUERY_ALL_RESERVATIONS = gql`
-  query getAllReservations {
-    reservations {
-      _id
+  query GetAllReservations {
+    getAllReservations {
+      id
       title
+      category
+      description
+      startDate
+      endDate
       status
+      provider
+      transportationType
+      price
+      priceCurrency
     }
   }
 `;

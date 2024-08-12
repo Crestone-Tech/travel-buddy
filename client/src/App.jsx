@@ -11,6 +11,7 @@ import Hero from "./components/Hero";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import Plan from "./pages/Plan";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 // used to add themes for MUI
@@ -43,18 +44,18 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <NavBar />
-          <Hero />
-          <main>
-            <Outlet />
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
+      {/* <ThemeProvider theme={theme}> */}
+      {/* <CssBaseline /> */}
+      <div className="flex-column justify-flex-start min-100-vh">
+        <Header />
+        {/* <NavBar /> */}
+        <Hero />
+        <main>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+      {/* </ThemeProvider> */}
     </ApolloProvider>
   );
 }
