@@ -69,9 +69,7 @@ export default function NavBar() {
               fontSize: "1rem",
               textAlign: "center",
             }}
-          >
-            Travel Buddy
-          </Typography>
+          ></Typography>
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
