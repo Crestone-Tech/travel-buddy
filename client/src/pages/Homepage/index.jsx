@@ -11,9 +11,14 @@ export default function Homepage() {
           vacation.
         </h1>
         <p className="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          vehicula, magna in vehicula egestas, ex velit luctus elit, non aliquam
-          metus velit eget lorem.
+          Travel Buddy has set out to create an application to help put you're
+          mind at ease when setting up that dream vacation that you and your
+          party are dying to go on. Envision your trip with our easy to use
+          whiteboard that you and your tribe will have access to simultaneously
+          to help put everyones vision together. Manage your tribes with a
+          simple click of the buton and even view your tribes planned trips.
+          Plan reservations with our Buddy board to help you keep track of
+          whatever you'll need to help make this vacation a success.
         </p>
       </div>
       <div className="image-container">
