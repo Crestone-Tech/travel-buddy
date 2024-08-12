@@ -1,20 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import Buddy from "./pages/Buddy"
-import Plan from "./pages/Plan"
-import Tribes from "./pages/Tribes"
-import Envision from "./pages/Envision"
-import Homepage from "./pages/Homepage"
-import Signup from "./components/Signup"
-import Login from "./components/Login"
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import Buddy from "./pages/Buddy";
+import Plan from "./pages/Plan";
+import Tribes from "./pages/Tribes";
+import Envision from "./pages/Envision";
+import Homepage from "./pages/Homepage";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import FAQ from "./components/FAQ";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     children: [
       {
@@ -22,35 +22,39 @@ const router = createBrowserRouter([
         element: <Homepage />,
       },
       {
-        path: '/plan',
+        path: "/plan",
         element: <Plan />,
       },
       {
-        path: '/tribes',
+        path: "/tribes",
         element: <Tribes />,
       },
       {
-        path: '/envision',
+        path: "/envision",
         element: <Envision />,
       },
       {
-        path: '/buddy',
+        path: "/buddy",
         element: <Buddy />,
       },
       {
-        path: '/signup',
+        path: "/signup",
         element: <Signup />,
       },
       {
-        path: '/login',
+        path: "/login",
         element: <Login />,
       },
+      {
+        path: "/faq",
+        element: <FAQ />,
+      },
     ],
-  }
-])
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
-)
+);
