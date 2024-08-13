@@ -43,3 +43,10 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+// CREATE_TRIBE mutation
+// export const CREATE_TRIBE = gql`
+//   mutation CreateTribe(
+//     createTribe()
+//     )
+// `;
