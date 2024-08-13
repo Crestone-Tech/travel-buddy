@@ -21,6 +21,7 @@ header {
   padding: 1px 2rem;
   width: 100%;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 .nav {
   margin-right: 100px;
@@ -58,6 +59,61 @@ body {
 body {
   box-sizing: border-box;
   padding-bottom: 3rem;
+}
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .nav {
+    margin-right: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .nav-list li {
+    font-size: 1rem;
+  }
+
+  .nav-list i {
+    font-size: 1.2rem;
+  }
+  img {
+    width: 180px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem;
+  }
+
+  .nav {
+    margin-right: 0;
+  }
+
+  .nav-list {
+    gap: 1rem;
+  }
+
+  .nav-list li {
+    font-size: 0.875rem;
+  }
+
+  .nav-list i {
+    font-size: 1rem;
+  }
+  img {
+    width: 180px;
+    height: auto;
+  }
 }
 /* Hero Component */
 
