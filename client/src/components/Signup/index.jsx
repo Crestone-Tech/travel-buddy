@@ -87,7 +87,7 @@ export default function Signup() {
       />
       <form
         onSubmit={handleFormSubmit}
-        className="relative w-full max-w-md bg-white pt-12 pb-12 px-12 rounded-md shadow-lg"
+        className="relative w-full max-w-md bg-white pt-12 pb-12 px-12 p-8 rounded-md shadow-lg"
       >
         <h2 className="text-4xl font-bold text-center">Sign up</h2>
         {formErrorMessage && (
