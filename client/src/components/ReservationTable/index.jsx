@@ -20,8 +20,15 @@ export default function ReservationTable() {
   const reservations = data?.getAllReservations || [];
   console.log("reservations", reservations);
 
+  const totalBudget = reservations.reduce((sum, reservation) => {
+    return sum + (reservation.price || 0);
+  }, 0);
+
   return (
     <div>
+      <div className="total-budget">
+        <strong>Total Budget: ${totalBudget}</strong>
+      </div>
       <h2>Reservations</h2>
       <table>
         <thead className="reservationTableHeader">
