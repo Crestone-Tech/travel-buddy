@@ -10,8 +10,8 @@
     "build": "cd client && npm run build"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2",
-    "autoprefixer": "^10.4.20"
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^8.2.2"
   },
   "dependencies": {
     "@emotion/react": "^11.13.0",

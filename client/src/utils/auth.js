@@ -1,7 +1,8 @@
 // PURPOSE: client authentication middleware
 
 // imports
-import decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
+const decode = jwtDecode;
 
 class AuthService {
   // get user data
