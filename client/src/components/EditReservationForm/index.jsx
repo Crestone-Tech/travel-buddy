@@ -1,44 +1,75 @@
+import FormControl from "@mui/material/FormControl";
+import { InputLabel, Input, FormHelperText, TextField } from "@mui/material";
+
 import { useState } from "react";
 import dayjs from "dayjs";
-// import DatePicker from "react-date-picker";
-// import "react-date-picker/dist/DatePicker.css";
-// import "react-calendar/dist/Calendar.css";
-// import "react-datepicker/dist/react-datepicker.css";
+import "./edit-reservation.css";
+
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function EditReservationForm({ reservation, setReservationData }) {
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setReservationData({
-      ...reservation,
-      [name]: value,
-    });
+  const setTitle = (event) => {
+    event.preventDefault();
+    setReservationData({ ...reservation, title: event.target.value });
   };
 
+  const setProvider = (event) => {
+    event.preventDefault();
+    setReservationData({ ...reservation, provider: event.target.value });
+  };
+  const setPrice = (event) => {
+    event.preventDefault();
+    setReservationData({ ...reservation, price: event.target.value });
+  };
   const handleChangeStartDate = (newValue) =>
     setReservationData({
       ...reservation,
       startDate: newValue.toDate().toISOString(),
     });
 
-  console.log("reservation", reservation);
-
   return (
     <>
-      <div>EditReservationForm</div>
-      <form>
-        <input
-          type="text"
-          name="title"
+      {/* TITLE */}
+      <div className="update-res-container">
+        <TextField
+          id="res-input-title"
+          label="Title"
           value={reservation.title}
-          onChange={handleChange}
+          onChange={(event) => {
+            setTitle(event);
+          }}
+          helperText="Briefly describe your plan"
         />
-        <DatePicker
-          value={dayjs(reservation.startDate)}
-          name="startDate"
-          onChange={handleChangeStartDate}
+        {/* PROVIDER */}
+        <TextField
+          id="res-input-provider"
+          label="Provider"
+          value={reservation.provider}
+          onChange={(event) => {
+            setProvider(event);
+          }}
+          helperText="Airline, Hotel, etc (if applicable)"
         />
-      </form>
+        {/* PRICE */}
+        <TextField
+          id="res-input-price"
+          label="Price"
+          value={reservation.price}
+          onChange={(event) => {
+            setPrice(event);
+          }}
+          helperText="Price (real or approximate)"
+        />
+
+        <form>
+          <input type="text" name="title" value={reservation.title} />
+          <DatePicker
+            value={dayjs(reservation.startDate)}
+            name="startDate"
+            onChange={handleChangeStartDate}
+          />
+        </form>
+      </div>
     </>
   );
 }
