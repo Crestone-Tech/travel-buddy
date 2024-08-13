@@ -109,7 +109,7 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
 
     createTribe(
-      
+      name: String!
     ): Tribe
 
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
