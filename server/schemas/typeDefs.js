@@ -50,7 +50,10 @@ const typeDefs = `
     user: User
   }
 
-  
+  type Tribe {
+    token: ID!
+    users: [User]
+  }
 
   type Query {
   getAllReservations: [Reservation]
@@ -59,6 +62,8 @@ const typeDefs = `
   users: [User]
   user(_id: ID!): User
   me: User
+
+  getTribe: Tribe
   }
 
   type Mutation {
@@ -95,6 +100,10 @@ const typeDefs = `
     createUser(name: String!, email: String!, password: String!): Auth
     removeUser: User
     login(email: String!, password: String!): Auth
+
+    createTribe(
+      
+    ): Tribe
   }
 `;
 
