@@ -1,12 +1,23 @@
 [
   {
-    "name": "Eggbert",
+    "firstName": "Eggbert",
+    "lastName": "Eggerson",
+    "username": "eggbert",
     "email": "egg@bert.com",
     "password": "bertz_the_egg"
   },
   {
-    "name": "Elliott",
+    "firstName": "Elliott",
+    "lastName": "Davis",
+    "username": "elliottdavis",
     "email": "elliott.davis@crestonetech.com",
     "password": "zowie"
+  },
+  {
+    "firstName": "Jose",
+    "lastName": "Falcon",
+    "username": "josefalcon",
+    "email": "jose.falcon@email.com",
+    "password": "falcon1"
   }
 ]

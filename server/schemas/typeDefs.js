@@ -24,13 +24,6 @@ const typeDefs = `
   acknowledged: Boolean,
   deletedCount: Int}
 
-  type User {
-    id: ID!
-    name: String!
-    email: String!
-    password: String!
-  }
-
   type Reservation {
     id: ID!
     title: String!
@@ -50,20 +43,33 @@ const typeDefs = `
     user: User
   }
 
+
   type Tribe {
     token: ID!
     users: [User]
   }
 
+
+  type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    username: String!
+    email: String!
+    password: String!
+  }
+    
   type Query {
-  getAllReservations: [Reservation]
-  getOneReservation(_id: ID!): Reservation
+    getAllReservations: [Reservation]
+    getOneReservation(_id: ID!): Reservation
 
-  users: [User]
-  user(_id: ID!): User
-  me: User
 
-  getTribe: Tribe
+    users: [User]
+    user(_id: ID!): User
+    me: User
+
+    getTribe: Tribe
+
   }
 
   type Mutation {
@@ -97,6 +103,7 @@ const typeDefs = `
     deleteReservation(_id: ID!): ResponseFromDeletion
     
     
+
     createUser(name: String!, email: String!, password: String!): Auth
     removeUser: User
     login(email: String!, password: String!): Auth
@@ -104,6 +111,10 @@ const typeDefs = `
     createTribe(
       
     ): Tribe
+
+    addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
+    loginUser(username: String!, password: String!): Auth
+
   }
 `;
 
