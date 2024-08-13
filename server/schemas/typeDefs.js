@@ -101,9 +101,7 @@ const typeDefs = `
     removeUser: User
     login(email: String!, password: String!): Auth
 
-    createTribe(
-      
-    ): Tribe
+    createTribe(name: String!): Tribe
   }
 `;
 
