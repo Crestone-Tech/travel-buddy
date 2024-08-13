@@ -19,9 +19,9 @@ export default function NavBar() {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Envision", path: "/Envision" },
-    { label: "Plan", path: "/Plan" },
+    { label: "Buddy", path: "/Buddy" },
     { label: "My Tribes", path: "/Tribes" },
-    { label: "Sign Up", path: "/signup" }, // change to buddy
+    { label: "Sign Up", path: "/signup" }, 
   ];
 
   const toggleDrawer = () => setOpen(!open);
