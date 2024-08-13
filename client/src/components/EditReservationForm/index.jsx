@@ -1,5 +1,5 @@
 import FormControl from "@mui/material/FormControl";
-import { InputLabel, Input, FormHelperText, TextField } from "@mui/material";
+import { MenuItem, InputLabel, Input, FormHelperText, TextField } from "@mui/material";
 
 import { useState } from "react";
 import dayjs from "dayjs";
@@ -7,7 +7,32 @@ import "./edit-reservation.css";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
+// This is preserved here as a reminder of how to implement a Select in which
+// the displayed value differs from the value the system deals with
+// const statusesAsObjects = [
+//   {
+//     value: "Booked",
+//     label: "Booked",
+//   },
+//   {
+//     value: "Idea",
+//     label: "Idea",
+//   },
+// ];
+
+const statuses = [
+  "Booked",
+  "Idea",
+  "Planned",
+  "Paid",
+  "Canceled",
+  "Reserved",
+  "Onsite",
+];
+
+
 function EditReservationForm({ reservation, setReservationData }) {
+
   const setTitle = (event) => {
     event.preventDefault();
     setReservationData({ ...reservation, title: event.target.value });
@@ -29,8 +54,9 @@ function EditReservationForm({ reservation, setReservationData }) {
 
   return (
     <>
+    <form>
       {/* TITLE */}
-      <div className="update-res-container">
+      
         <TextField
           id="res-input-title"
           label="Title"
@@ -60,16 +86,27 @@ function EditReservationForm({ reservation, setReservationData }) {
           }}
           helperText="Price (real or approximate)"
         />
-
-        <form>
-          <input type="text" name="title" value={reservation.title} />
+        <TextField
+          id="outlined-select-status"
+          select
+          label="status"
+          defaultValue={reservation.status}
+          helperText="How planned is this plan?"
+        >
+          {statuses.map((option) => (
+          <MenuItem key={option} value={option}> 
+           {option} 
+           </MenuItem> 
+           ))}
+        </TextField>
+        
+          
           <DatePicker
             value={dayjs(reservation.startDate)}
             name="startDate"
             onChange={handleChangeStartDate}
           />
         </form>
-      </div>
     </>
   );
 }
