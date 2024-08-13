@@ -19,5 +19,12 @@
     "username": "josefalcon",
     "email": "jose.falcon@email.com",
     "password": "falcon1"
+  }, 
+  {
+    "firstName": "Michael",
+    "lastName": "Scarn",
+    "username": "agent_scarn",
+    "email": "agent_scarn@dundermifflin.com",
+    "password": "threat_level_midnight"
   }
 ]

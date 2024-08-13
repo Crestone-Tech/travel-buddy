@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import Buddy from "./pages/Buddy";
-import Plan from "./pages/Plan";
 import Tribes from "./pages/Tribes";
 import Envision from "./pages/Envision";
 import Homepage from "./pages/Homepage";
@@ -23,10 +22,7 @@ const router = createBrowserRouter([
         index: true,
         element: <Homepage />,
       },
-      {
-        path: "/plan",
-        element: <Plan />,
-      },
+    
       {
         path: "/tribes",
         element: <Tribes />,
