@@ -35,7 +35,7 @@
         "transportationType": "",
         "startDate": "2024-10-23",
         "endDate": "2024-10-23",
-        "status": "Reserved",
+        "status": "Paid",
         "provider": "Original Dublin",
         "price": 200.00
     },
@@ -65,7 +65,7 @@
         "transportationType": "train",
         "startDate": "2025-06-27",
         "endDate": "2025-06-28",
-        "status": "Planned",
+        "status": "Paid",
         "provider": "Comboios de Portugal",
         "price": 40.00
     },
@@ -85,7 +85,7 @@
         "transportationType": "",
         "startDate": "2025-06-27",
         "endDate": "2025-06-28",
-        "status": "Planned",
+        "status": "Reserved",
         "provider": "Sintra 1012 Guesthouse",
         "price": 130.00
     },
@@ -95,7 +95,7 @@
         "transportationType": "",
         "startDate": "2025-06-17",
         "endDate": "2025-06-18",
-        "status": "Reserved",
+        "status": "Paid",
         "provider": "We Hate Tourism Tours Lisboa",
         "price": 80.00
     },

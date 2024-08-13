@@ -8,5 +8,10 @@
     "name": "Elliott",
     "email": "elliott.davis@crestonetech.com",
     "password": "zowie"
+  },
+  {
+    "name": "Michael Scarn",
+    "email": "agent_scarn@dundermifflin.com",
+    "password": "threat_level_midnight"
   }
 ]
