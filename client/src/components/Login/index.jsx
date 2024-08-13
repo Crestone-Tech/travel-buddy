@@ -1,8 +1,11 @@
 import { LOGIN_USER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
+import { redirect } from "react-router-dom";
 
 import Auth from "../../utils/auth";
+
+import sky from "../../assets/images/sky.jpg";
 
 export default function Login() {
   const [formErrorMessage, setFormErrorMessage] = useState("");
@@ -38,7 +41,10 @@ export default function Login() {
       console.log("data", data);
       const { user, token } = data?.loginUser || {};
       console.log("LOGIN_USER data: ", data);
-      if (token) Auth.login(token);
+      if (token) {
+        Auth.login(token);
+        return redirect("/");
+      }
     } catch (error) {
       if (error.message) {
         setFormErrorMessage(error.message);
@@ -48,16 +54,20 @@ export default function Login() {
   };
 
   return (
-    <div className="login-container relative min-h-screen flex justify-center px-12">
-      <form onSubmit={handleFormSubmit} className="relative w-full mt-8 mb-8">
-        <h2 className="text-4xl font-bold text-center">Login</h2>
+    <div className="login-container relative min-h-screen flex items-center justify-center bg-cover bg-center">
+      <img src={sky} alt="Sky" className="absolute inset-0 z-0 object-cover" />
+      <form
+        onSubmit={handleFormSubmit}
+        className="relative w-full max-w-md bg-white pt-12 pb-12 px-12 p-8 rounded-md shadow-lg"
+      >
+        <h2 className="text-4xl font-bold text-center pb-8">Login</h2>
         {formErrorMessage && (
           <div className="text-red-500 text-center">{formErrorMessage}</div>
         )}
         <label htmlFor="username" className="flex flex-col gap-2 w-full mb-4">
           <span className="text-sm font-bold">Username</span>
           <input
-            className="w-full px-2 py-2 text-sm"
+            className="w-full px-2 py-2 text-sm border border-gray-300 rounded"
             type="text"
             id="username"
             name="username"
@@ -75,7 +85,7 @@ export default function Login() {
         <label htmlFor="password" className="flex flex-col gap-2 w-full mb-4">
           <span className="text-sm font-bold">Password</span>
           <input
-            className="w-full px-2 py-2 text-sm"
+            className="w-full px-2 py-2 text-sm border border-gray-300 rounded"
             type="password"
             id="password"
             name="password"
@@ -90,17 +100,23 @@ export default function Login() {
             required
           />
         </label>
-        <div className="flex flex-col gap-4 w-full">
+        <div className="pb-2">
+          Don't have an account? Sign up{" "}
+          <a href="/signup" className="text-blue-800 underline">
+            here
+          </a>
+        </div>
+        <div className="flex flex-row gap-2 w-full">
           <button
             type="submit"
-            className="bg-blue-950 text-white py-2 rounded-md"
+            className="bg-blue-950 text-white w-1/2 py-2 rounded-md"
           >
             Login
           </button>
           <button
             type="button"
             onClick={clearForm}
-            className="bg-gray-400 text-white py-2 rounded-md"
+            className="bg-gray-400 text-white w-1/2 py-2 rounded-md"
           >
             Clear
           </button>
