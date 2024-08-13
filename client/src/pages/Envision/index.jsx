@@ -10,7 +10,7 @@ export default function Envision() {
     return (
         <div className="envisionParent" style={{
             position: 'fixed',
-            height: '80%',
+            height: '75%',
             width: '100%',
         }}>
             <Tldraw store={store}/>
