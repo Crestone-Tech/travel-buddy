@@ -11,11 +11,11 @@ export default function FAQ() {
     { question: "", answer: "" },
   ];
   return (
-    <div>
+    <div className="faq-container">
       <h2>Frequently Asked Questions</h2>
-      <ul>
+      <ul className="faq-list">
         {questions.map((item, index) => (
-          <li key={index}>
+          <li key={index} className="faq-item">
             <strong>{item.question}</strong>
             <p>{item.answer}</p>
           </li>
