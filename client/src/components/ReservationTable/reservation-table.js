@@ -14,7 +14,7 @@ for (reservation of document.querySelectorAll(".diving"))
   reservation.children[0].children[0].classList.add("fa-fish");
 
 for (reservation of document.querySelectorAll(".train"))
-  reservation.children[0].children[0].classList.add("fa-solid fa-train");
+  reservation.children[0].children[0].classList.add("fa-train");
 
 for (reservation of document.querySelectorAll(".free"))
   reservation.children[0].children[0].classList.add(
