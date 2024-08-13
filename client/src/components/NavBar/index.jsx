@@ -19,7 +19,7 @@ export default function NavBar() {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Envision", path: "/Envision" },
-    { label: "Buddy", path: "/Buddy" },
+    { label: "Buddy\u2122", path: "/Buddy" },
     { label: "My Tribes", path: "/Tribes" },
     { label: "Sign Up", path: "/signup" },
   ];

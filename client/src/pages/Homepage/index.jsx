@@ -7,18 +7,15 @@ export default function Homepage() {
     <div className="homepage-container">
       <div className="text-container">
         <h1 className="title">
-          Travel Buddy, The stress-free way to set up that perfect group
-          vacation.
+          <strong>Travel Buddy&#8482;</strong><br></br> The fun and low-stress path to a perfect group vacation.
         </h1>
         <p className="description">
-          Travel Buddy has set out to create an application to help put you're
-          mind at ease when setting up that dream vacation that you and your
-          party are dying to go on. Envision your trip with our easy to use
-          whiteboard that you and your tribe will have access to simultaneously
-          to help put everyones vision together. Manage your tribes with a
-          simple click of the buton and even view your tribes planned trips.
-          Plan reservations with our Buddy board to help you keep track of
-          whatever you'll need to help make this vacation a success.
+          Travel Buddy helps you organize the dream vacation you've always wanted. 
+          Envision a trip with an easy to use and collaborative
+          whiteboard and plan together in real-time. Manage tribes of traveling companions
+          and view the trips you've planned.
+          You can even track reservations with our Buddy board to help you manage all your trip 
+          logistics. Travel Buddy has everything you need to make your vacation a success!
         </p>
       </div>
       <div className="image-container">
