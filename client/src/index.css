@@ -115,6 +115,41 @@ body {
     height: auto;
   }
 }
+@media (max-width: 412px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  .nav {
+    margin-right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nav-list li {
+    font-size: 0.75rem;
+  }
+
+  .nav-list i {
+    font-size: 0.875rem;
+  }
+
+  img {
+    width: 180px;
+    height: auto;
+  }
+}
 /* Hero Component */
 
 .hero {
