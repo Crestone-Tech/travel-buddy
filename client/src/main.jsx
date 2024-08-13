@@ -10,6 +10,7 @@ import Homepage from "./pages/Homepage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import FAQ from "./components/FAQ";
+import Contact from "./pages/Contact";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import "./styles.css";
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQ />,
+      },
+      {
+        path: '/contact',
+        element: <Contact />
       },
     ],
   },
