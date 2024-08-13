@@ -57,7 +57,7 @@ export default function Signup() {
         variables: {
           firstName: formData.firstName.trim(),
           lastName: formData.lastName.trim(),
-          username: formData.username.trim().toLowerCase(),
+          username: formData.username.trim(),
           email: formData.email.trim().toLowerCase(),
           password: formData.password,
         },

@@ -31,13 +31,14 @@ export default function Login() {
       console.log("formData", formData);
       const { data } = await loginUser({
         variables: {
-          username: formData.username.trim().toLowerCase(),
+          username: formData.username.trim(),
           password: formData.password,
         },
       });
-
+      console.log("data", data);
+      const { user, token } = data?.loginUser || {};
       console.log("LOGIN_USER data: ", data);
-      Auth.login(data.loginUser.token);
+      if (token) Auth.login(token);
     } catch (error) {
       if (error.message) {
         setFormErrorMessage(error.message);
