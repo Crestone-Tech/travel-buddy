@@ -8,7 +8,11 @@ const assetUrls = {}
 export default function Envision() {
     const store = useSyncDemo({ roomId: 'my-unique-room-id' })
     return (
-        <div className="envisionParent">
+        <div className="envisionParent" style={{
+            position: 'fixed',
+            height: '80%',
+            width: '100%',
+        }}>
             <Tldraw store={store}/>
         </div>
     )
