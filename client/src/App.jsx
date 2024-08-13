@@ -44,18 +44,20 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <NavBar />
-          <Hero />
-          <main>
-            <Outlet />
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <div className="flex-column justify-flex-start min-100-vh">
+            <Header />
+            <NavBar />
+            <Hero />
+            <main>
+              <Outlet />
+            </main>
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </LocalizationProvider>
     </ApolloProvider>
   );
 }
