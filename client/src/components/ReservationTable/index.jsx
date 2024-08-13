@@ -1,7 +1,8 @@
-import React from "react";
-import { useQuery } from "@apollo/client";
+import React, { useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
 import "./reservation-table.css";
 import { useEffect } from "react";
+import EditReservationForm from "../EditReservationForm";
 import { QUERY_ALL_RESERVATIONS } from "../../utils/queries";
 
 export default function ReservationTable() {
@@ -16,9 +17,20 @@ export default function ReservationTable() {
     };
   }, []);
 
+  const [reservationData, setReservationData] = useState({
+    title: "",
+    provider: "",
+    startDate: "",
+  });
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
+  // const [deleteReservation] = useMutation(MUTATION_DELETE_RESERVATION);
   const reservations = data?.getAllReservations || [];
   console.log("reservations", reservations);
+
+  function deleteHandler(reservationId) {
+    console.log("You called the deleteHandler to delete Id", reservationId);
+    // deleteReservation({variables: {id: reservationId}});
+  }
 
   return (
     <div>
@@ -43,7 +55,9 @@ export default function ReservationTable() {
           {reservations.map((reservation) => (
             <tr
               key={reservation.id}
-              className={reservation.category + " " + reservation.transportationType}
+              className={
+                reservation.category + " " + reservation.transportationType
+              }
             >
               <td>
                 <i className="fa" aria-hidden="true"></i>
@@ -56,15 +70,29 @@ export default function ReservationTable() {
               <td>{reservation.price}</td>
               <td>{reservation.priceCurrency}</td>
               <td>
-                <i className="fa fa-pencil" aria-hidden="true"></i>
+                <i
+                  className="fa fa-pencil"
+                  aria-hidden="true"
+                  onClick={() => setReservationData(reservation)}
+                ></i>
               </td>
               <td>
-                <i className="fa fa-trash" aria-hidden="true"></i>
+                <i
+                  className="fa fa-trash"
+                  aria-hidden="true"
+                  onClick={() => deleteHandler(reservation.id)}
+                ></i>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {reservationData.id && (
+        <EditReservationForm
+          reservation={reservationData}
+          setReservationData={setReservationData}
+        />
+      )}
     </div>
   );
 }
