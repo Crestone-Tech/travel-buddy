@@ -58,7 +58,6 @@ body {
 }
 body {
   box-sizing: border-box;
-  padding-bottom: 3rem;
 }
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
