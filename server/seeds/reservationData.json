@@ -1,6 +1,6 @@
 [
     {
-        "title": "Ireland - airfare",
+        "title": "Ireland flight: STL -> DUB",
         "category": "transportation",
         "transportationType": "airline",
         "startDate": "2024-10-20",
@@ -44,13 +44,13 @@
         "category": "activity",
         "transportationType": "",
         "startDate": "2024-10-25",
-        "endDate": "2024-10-35",
+        "endDate": "2024-10-25",
         "status": "Onsite",
         "provider": "",
         "price": 100.00
     },
     {
-        "title": "Portugal - airfare",
+        "title": "Portugal flight: BOS -> LIS",
         "category": "transportation",
         "transportationType": "airline",
         "startDate": "2025-06-15",
