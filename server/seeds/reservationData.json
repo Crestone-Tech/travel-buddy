@@ -1,0 +1,113 @@
+[
+    {
+        "title": "Ireland flight: STL -> DUB",
+        "category": "transportation",
+        "transportationType": "airline",
+        "startDate": "2024-10-20",
+        "endDate": "2024-10-30",
+        "status": "Reserved",
+        "provider": "Aer Lingus",
+        "price": 1800.00
+    },
+    {
+        "title": "Ireland - ferry to Inis Oirr",
+        "category": "transportation",
+        "transportationType": "ferry",
+        "startDate": "2024-10-22",
+        "endDate": "2024-10-22",
+        "status": "Planned",
+        "provider": "Doolin Ferry",
+        "price": 35.00
+    },
+    {
+        "title": "Ireland - Dublin Hotel",
+        "category": "lodging",
+        "transportationType": "",
+        "startDate": "2024-10-20",
+        "endDate": "2024-10-30",
+        "status": "Reserved",
+        "provider": "Beresford Hotel",
+        "price": 1650.00
+    },
+    {
+        "title": "Ireland - sightseeing tour",
+        "category": "activity",
+        "transportationType": "",
+        "startDate": "2024-10-23",
+        "endDate": "2024-10-23",
+        "status": "Paid",
+        "provider": "Original Dublin",
+        "price": 200.00
+    },
+    {
+        "title": "Ireland - Jameson Distillery",
+        "category": "activity",
+        "transportationType": "",
+        "startDate": "2024-10-25",
+        "endDate": "2024-10-25",
+        "status": "Onsite",
+        "provider": "",
+        "price": 100.00
+    },
+    {
+        "title": "Portugal flight: BOS -> LIS",
+        "category": "transportation",
+        "transportationType": "airline",
+        "startDate": "2025-06-15",
+        "endDate": "2025-06-28",
+        "status": "Reserved",
+        "provider": "TAP Portugal",
+        "price": 1275.00
+    },
+    {
+        "title": "Portugal - day trip to Sintra",
+        "category": "transportation",
+        "transportationType": "train",
+        "startDate": "2025-06-27",
+        "endDate": "2025-06-28",
+        "status": "Paid",
+        "provider": "Comboios de Portugal",
+        "price": 40.00
+    },
+    {
+        "title": "Portugal - Lisbon Hotel",
+        "category": "lodging",
+        "transportationType": "",
+        "startDate": "2025-06-15",
+        "endDate": "2025-06-27",
+        "status": "Reserved",
+        "provider": "Hotel Riverside Alfama",
+        "price": 2000.00
+    },
+    {
+        "title": "Portugal - Sintra Hotel",
+        "category": "lodging",
+        "transportationType": "",
+        "startDate": "2025-06-27",
+        "endDate": "2025-06-28",
+        "status": "Reserved",
+        "provider": "Sintra 1012 Guesthouse",
+        "price": 130.00
+    },
+    {
+        "title": "Portugul - Lisbon walking tour",
+        "category": "activity",
+        "transportationType": "",
+        "startDate": "2025-06-17",
+        "endDate": "2025-06-18",
+        "status": "Paid",
+        "provider": "We Hate Tourism Tours Lisboa",
+        "price": 80.00
+    },
+    {
+        "title": "Portugal - Lisbon last dinner",
+        "category": "service",
+        "transportationType": "",
+        "startDate": "2025-06-26",
+        "endDate": "2025-06-26",
+        "status": "Onsite",
+        "provider": "Tapa Bucho",
+        "price": 200.00
+    }
+    
+]

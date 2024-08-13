@@ -19,9 +19,9 @@ export default function NavBar() {
   const navItems = [
     { label: "Home", path: "/" },
     { label: "Envision", path: "/Envision" },
-    { label: "Plan", path: "/Plan" },
+    { label: "Buddy\u2122", path: "/Buddy" },
     { label: "My Tribes", path: "/Tribes" },
-    { label: "Sign Up", path: "/signup" }, // change to buddy
+    { label: "Sign Up", path: "/signup" },
   ];
 
   const toggleDrawer = () => setOpen(!open);
@@ -102,7 +102,21 @@ export default function NavBar() {
           <IconButton
             color="inherit"
             edge="end"
-            sx={{ display: { xs: "block", md: "none" }, marginTop: "0.25rem" }}
+            sx={{
+              display: { xs: "block", md: "none" },
+              "@media (min-width:480px) and (max-width:599px)": {
+                marginTop: "-1.5rem", // Adjust margin for 480px to 599px screens
+              },
+              "@media (min-width:600px) and (max-width:769px)": {
+                marginTop: "-2rem", // Adjust margin for 480px to 599px screens
+              },
+              "@media (min-width:769px) and (max-width:899px)": {
+                marginTop: "0.05rem", // Adjust margin for 600px to 899px screens
+              },
+              "@media (max-width:479px)": {
+                marginTop: "-0.5rem", // Adjust margin for screens smaller than 480px
+              },
+            }}
             onClick={toggleDrawer}
           >
             <MenuIcon />
