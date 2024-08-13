@@ -7,6 +7,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Hero from "./components/Hero";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
