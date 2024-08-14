@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import "./reservation-table.css";
-import { QUERY_ALL_RESERVATIONS } from "../../utils/queries";
+import {
+  QUERY_ALL_RESERVATIONS,
+  DELETE_SINGLE_RESERVATION,
+} from "../../utils/queries";
 
 export default function ReservationTable() {
   useEffect(() => {
@@ -17,7 +20,14 @@ export default function ReservationTable() {
 
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
   const reservations = data?.getAllReservations || [];
-  console.log("reservations", reservations);
+
+  const [deleteReservation] = useMutation(DELETE_SINGLE_RESERVATION, {
+    refetchQueries: () => [{ query: QUERY_ALL_RESERVATIONS }],
+  });
+  function deleteHandler(reservationId) {
+    console.log("You called the deleteHandler to delete Id", reservationId);
+    deleteReservation({ variables: { id: reservationId } });
+  }
 
   // Group reservations by Trip Title
   const groupedReservations = reservations.reduce((groups, reservation) => {
@@ -30,20 +40,25 @@ export default function ReservationTable() {
   }, {});
 
   // Calculate total budget for each Trip Title
-  const totalBudgets = Object.keys(groupedReservations).reduce((totals, title) => {
-    const total = groupedReservations[title].reduce((sum, reservation) => {
-      return sum + (reservation.price || 0);
-    }, 0);
-    totals[title] = total;
-    return totals;
-  }, {});
+  const totalBudgets = Object.keys(groupedReservations).reduce(
+    (totals, title) => {
+      const total = groupedReservations[title].reduce((sum, reservation) => {
+        return sum + (reservation.price || 0);
+      }, 0);
+      totals[title] = total;
+      return totals;
+    },
+    {}
+  );
 
   return (
     <div>
       {Object.keys(groupedReservations).map((title) => (
         <div key={title} className="reservation-group">
           <div className="total-budget">
-            <strong>Total Estimated Cost for "{title}": ${totalBudgets[title]}</strong>
+            <strong>
+              Total Estimated Cost for "{title}": ${totalBudgets[title]}
+            </strong>
           </div>
           <h2 className="trip-title">{title}</h2>
           <table>
@@ -67,7 +82,9 @@ export default function ReservationTable() {
               {groupedReservations[title].map((reservation) => (
                 <tr
                   key={reservation.id}
-                  className={reservation.category + " " + reservation.transportationType}
+                  className={
+                    reservation.category + " " + reservation.transportationType
+                  }
                 >
                   <td>
                     <i className="fa" aria-hidden="true"></i>
@@ -85,7 +102,11 @@ export default function ReservationTable() {
                     <i className="fa fa-pencil" aria-hidden="true"></i>
                   </td>
                   <td>
-                    <i className="fa fa-trash" aria-hidden="true"></i>
+                    <i
+                      className="fa fa-trash"
+                      aria-hidden="true"
+                      onClick={() => deleteHandler(reservation.id)}
+                    ></i>
                   </td>
                 </tr>
               ))}
