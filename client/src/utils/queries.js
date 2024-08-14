@@ -55,3 +55,13 @@ export const QUERY_ALL_RESERVATIONS = gql`
     }
   }
 `;
+
+// DELETE_SINGLE_RESERVATION query
+export const DELETE_SINGLE_RESERVATION = gql`
+  mutation deleteReservation($id: ID!) {
+    deleteReservation(_id: $id) {
+      acknowledged
+      deletedCount
+    }
+  }
+`;
