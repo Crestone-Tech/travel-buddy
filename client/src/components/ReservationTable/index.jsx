@@ -94,8 +94,10 @@ export default function ReservationTable() {
                   <td>{reservation.town}</td>
                   <td>{reservation.status}</td>
                   <td>{reservation.provider}</td>
-                  <td>{reservation.startDate}</td>
-                  <td>{reservation.endDate}</td>
+                  <td>
+                    {new Date(reservation.startDate).toLocaleDateString()}
+                  </td>
+                  <td>{new Date(reservation.endDate).toLocaleDateString()}</td>
                   <td>{reservation.price}</td>
                   <td>{reservation.priceCurrency}</td>
                   <td>
