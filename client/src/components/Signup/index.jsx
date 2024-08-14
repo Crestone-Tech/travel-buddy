@@ -5,7 +5,7 @@ import { redirect } from "react-router-dom";
 
 import Auth from "../../utils/auth";
 
-import beach from "../../assets/images/beach.jpg";
+import vietnam from "../../assets/images/vietnam.jpg";
 
 export default function Signup() {
   const [formErrorMessage, setFormErrorMessage] = useState("");
@@ -79,15 +79,15 @@ export default function Signup() {
   };
 
   return (
-    <div className="signup-container relative min-h-screen flex items-center justify-center bg-cover bg-center">
+    <div className="signup-container relative min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed">
       <img
-        src={beach}
-        alt="Beach"
-        className="absolute inset-0 z-0 object-cover"
+        src={vietnam}
+        alt="vietnam"
+        className="absolute inset-0 z-0 object-cover w-full h-full"
       />
       <form
         onSubmit={handleFormSubmit}
-        className="relative w-full max-w-md bg-white pt-12 pb-12 px-12 p-8 rounded-md shadow-lg"
+        className="relative w-full max-w-md bg-white pt-12 pb-12 px-12 p-4 rounded-md shadow-lg bg-opacity-90"
       >
         <h2 className="text-4xl font-bold text-center">Sign up</h2>
         {formErrorMessage && (
