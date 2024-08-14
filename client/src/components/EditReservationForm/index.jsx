@@ -1,5 +1,6 @@
 import FormControl from "@mui/material/FormControl";
 import {
+  Box,
   MenuItem,
   InputLabel,
   Input,
@@ -28,13 +29,13 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 // ];
 
 const statuses = [
-  "Booked",
   "Idea",
-  "Planned",
+  "Agreed",
+  "Verbal Reservation",
+  "Online Reservation",
   "Paid",
   "Canceled",
-  "Reserved",
-  "Onsite",
+  "Arrange Onsite",
 ];
 
 function EditReservationForm({
@@ -71,74 +72,98 @@ function EditReservationForm({
 
   return (
     <>
-      <form onSubmit={handleUpdateReservation}>
-        {/* TITLE */}
-
-        <TextField
-          id="res-input-title"
-          required
-          label="Title"
-          value={reservation.title}
-          onChange={(event) => {
-            setTitle(event);
-          }}
-          helperText="Briefly describe your plan"
-        />
-        {/* PROVIDER */}
-        <TextField
-          id="res-input-provider"
-          label="Provider"
-          value={reservation.provider}
-          onChange={(event) => {
-            setProvider(event);
-          }}
-          helperText="Airline, Hotel, etc (if applicable)"
-        />
-        {/* PRICE */}
-        <TextField
-          id="res-input-price"
-          label="Price"
-          value={reservation.price}
-          onChange={(event) => {
-            setPrice(event);
-          }}
-          helperText="Price (real or approximate)"
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>,
-          }}
-        />
-        <TextField
-          id="outlined-select-status"
-          select
-          label="status"
-          defaultValue={reservation.status}
-          helperText="How planned is this plan?"
-        >
-          {statuses.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        <DatePicker
-          label="Date (Start)"
-          required
-          value={dayjs(reservation.startDate)}
-          name="startDate"
-          onChange={handleChangeStartDate}
-          helperText="In th"
-        />
-        <DatePicker
-          label="Date (End)"
-          required
-          value={dayjs(reservation.endDate)}
-          name="endDate"
-          onChange={handleChangeEndDate}
-          helperText="In th"
-        />
-        <input type="submit" name="Submit" />
-      </form>
+      <Box
+        height={400}
+        width={530}
+        mx={40}
+        my={4}
+        display="flex"
+        alignItems="center"
+        gap={4}
+        p={2}
+        sx={{ border: "2px solid grey" }}
+      >
+        <form onSubmit={handleUpdateReservation}>
+          <div>
+            {/* TITLE */}
+            <TextField
+              id="res-input-title"
+              required
+              fullWidth
+              label="Title"
+              value={reservation.title}
+              onChange={(event) => {
+                setTitle(event);
+              }}
+              helperText="Briefly describe your plan"
+            />
+          </div>
+          <div className="dialog-row">
+            {/* PROVIDER */}
+            <TextField
+              id="res-input-provider"
+              label="Provider"
+              value={reservation.provider}
+              onChange={(event) => {
+                setProvider(event);
+              }}
+              helperText="Airline, Hotel, etc (if applicable)"
+            />
+            {/* STATUS */}
+            <TextField
+              id="outlined-select-status"
+              select
+              label="status"
+              defaultValue={reservation.status}
+              helperText="How planned is this plan?"
+            >
+              {statuses.map((option) => (
+                <MenuItem key={option} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </TextField>
+          </div>
+          <div className="dialog-row">
+            {/* Start Date */}
+            <DatePicker
+              label="Date (Start)"
+              required
+              value={dayjs(reservation.startDate)}
+              name="startDate"
+              onChange={handleChangeStartDate}
+              helperText="In th"
+            />
+            {/* End Date */}
+            <DatePicker
+              label="Date (End)"
+              required
+              value={dayjs(reservation.endDate)}
+              name="endDate"
+              onChange={handleChangeEndDate}
+              helperText="In th"
+            />
+          </div>
+          <div className="dialog-row">
+            {/* PRICE */}
+            <TextField
+              id="res-input-price"
+              label="Price"
+              value={reservation.price}
+              onChange={(event) => {
+                setPrice(event);
+              }}
+              helperText="Price (real or approximate)"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+            />
+          </div>
+          <input type="submit" name="Submit" />
+        </form>
+      </Box>
     </>
   );
 }
