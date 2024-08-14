@@ -19,10 +19,17 @@ td {
   font-size: 1.2em;
   color: darkred;
   font-weight: bold;
+  fill            : none;
+  font: 400 25px Arial;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke: 1px;
+  
+  
 }
 
 .reservation-group {
-  margin-bottom: 40px;
+  padding-top: 30px;
+  margin-bottom: 10px;
   margin-left: 15px;
 }
 
