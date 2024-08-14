@@ -73,7 +73,7 @@ export default function ReservationTable() {
                 <th>Start</th>
                 <th>End</th>
                 <th>$</th>
-                <th>Cur</th>
+                {/* <th>Cur</th> */}
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
@@ -99,7 +99,7 @@ export default function ReservationTable() {
                   </td>
                   <td>{new Date(reservation.endDate).toLocaleDateString()}</td>
                   <td>{reservation.price}</td>
-                  <td>{reservation.priceCurrency}</td>
+                  {/* <td>{reservation.priceCurrency}</td> */}
                   <td>
                     <i className="fa fa-pencil" aria-hidden="true"></i>
                   </td>
