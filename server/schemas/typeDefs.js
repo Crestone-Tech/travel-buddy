@@ -27,6 +27,8 @@ const typeDefs = `
   type Reservation {
     id: ID!
     title: String!
+    country: String!
+    town: String!
     category: String!
     description: String
     startDate: Date!
@@ -76,6 +78,8 @@ const typeDefs = `
   type Mutation {
     createReservation(
       title: String!, 
+      country: String!,
+      town: String!,
       category: String!, 
       description: String, 
       startDate: Date, 
@@ -90,6 +94,8 @@ const typeDefs = `
     updateReservation(
       _id: ID!,
       title: String!, 
+      country: String!,
+    town: String!,
       category: String!, 
       description: String, 
       startDate: Date, 
