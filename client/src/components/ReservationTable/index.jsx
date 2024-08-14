@@ -43,9 +43,9 @@ export default function ReservationTable() {
       {Object.keys(groupedReservations).map((title) => (
         <div key={title} className="reservation-group">
           <div className="total-budget">
-            <strong>Total Budget for {title}: ${totalBudgets[title]}</strong>
+            <strong>Total Estimated Cost for "{title}": ${totalBudgets[title]}</strong>
           </div>
-          <h2>{title}</h2>
+          <h2 className="trip-title">{title}</h2>
           <table>
             <thead className="reservationTableHeader">
               <tr>
