@@ -45,7 +45,8 @@ const typeDefs = `
 
 
   type Tribe {
-    token: ID!
+    id: ID!
+    name: String!
     users: [User]
   }
 
