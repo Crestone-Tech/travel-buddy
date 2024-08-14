@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import "./reservation-table.css";
 import { useEffect } from "react";
+import AForm from "../AForm";
 import EditReservationForm from "../EditReservationForm";
-import { QUERY_ALL_RESERVATIONS } from "../../utils/queries";
+import {
+  QUERY_ALL_RESERVATIONS,
+  DELETE_SINGLE_RESERVATION,
+} from "../../utils/queries";
 
 export default function ReservationTable() {
   useEffect(() => {
@@ -23,17 +27,17 @@ export default function ReservationTable() {
     startDate: "",
   });
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
-  // const [deleteReservation] = useMutation(MUTATION_DELETE_RESERVATION);
+  const [deleteReservation] = useMutation(DELETE_SINGLE_RESERVATION);
   const reservations = data?.getAllReservations || [];
   // console.log("reservations", reservations);
 
   function handleUpdateReservation() {
-    console.log("handleUpdateReservation",reservationData);
+    console.log("handleUpdateReservation", reservationData);
   }
 
   function deleteHandler(reservationId) {
     console.log("You called the deleteHandler to delete Id", reservationId);
-    // deleteReservation({variables: {id: reservationId}});
+    deleteReservation({ variables: { id: reservationId } });
   }
 
   return (
@@ -91,11 +95,11 @@ export default function ReservationTable() {
           ))}
         </tbody>
       </table>
+
       {reservationData.id && (
-        <EditReservationForm
+        <AForm
           reservation={reservationData}
           setReservationData={setReservationData}
-          reservationData={reservationData}
         />
       )}
     </div>
