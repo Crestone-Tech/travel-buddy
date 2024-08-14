@@ -25,7 +25,11 @@ export default function ReservationTable() {
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
   // const [deleteReservation] = useMutation(MUTATION_DELETE_RESERVATION);
   const reservations = data?.getAllReservations || [];
-  console.log("reservations", reservations);
+  // console.log("reservations", reservations);
+
+  function handleUpdateReservation() {
+    console.log("handleUpdateReservation",reservationData);
+  }
 
   function deleteHandler(reservationId) {
     console.log("You called the deleteHandler to delete Id", reservationId);
@@ -91,6 +95,7 @@ export default function ReservationTable() {
         <EditReservationForm
           reservation={reservationData}
           setReservationData={setReservationData}
+          reservationData={reservationData}
         />
       )}
     </div>
