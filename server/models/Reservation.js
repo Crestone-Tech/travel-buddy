@@ -13,6 +13,12 @@ const reservationSchema = new Schema({
   description: {
     type: String,
   },
+  country: {
+    type: String,
+  },
+  town: {
+    type: String,
+  },
   startDate: {
     type: Date,
   },

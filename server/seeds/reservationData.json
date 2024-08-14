@@ -1,6 +1,7 @@
 [
     {
-        "title": "Ireland flight: STL -> DUB",
+        "title": "Meet Irish Relatives",
+        "description": "Flight: STL -> DUB",
         "category": "transportation",
         "transportationType": "airline",
         "startDate": "2024-10-20",
@@ -10,7 +11,10 @@
         "price": 1800.00
     },
     {
-        "title": "Ireland - ferry to Inis Oirr",
+        "title": "Meet Irish Relatives",
+        "description": "Ferry to Inis Oirr",
+        "country": "Ireland",
+        "town": "Doolin",
         "category": "transportation",
         "transportationType": "ferry",
         "startDate": "2024-10-22",
@@ -20,7 +24,10 @@
         "price": 35.00
     },
     {
-        "title": "Ireland - Dublin Hotel",
+        "title": "Meet Irish Relatives",
+        "description": "Dublin Hotel",
+        "country": "Ireland",
+        "town": "Dublin",
         "category": "lodging",
         "transportationType": "",
         "startDate": "2024-10-20",
@@ -30,7 +37,10 @@
         "price": 1650.00
     },
     {
-        "title": "Ireland - sightseeing tour",
+        "title": "Meet Irish Relatives",
+        "description": "Sightseeing tour",
+        "country": "Ireland",
+        "town": "Dublin",
         "category": "activity",
         "transportationType": "",
         "startDate": "2024-10-23",
@@ -40,7 +50,10 @@
         "price": 200.00
     },
     {
-        "title": "Ireland - Jameson Distillery",
+        "title": "Meet Irish Relatives",
+        "description": "Jameson Distillery",
+        "country": "Ireland",
+        "town": "Dublin",
         "category": "activity",
         "transportationType": "",
         "startDate": "2024-10-25",
@@ -50,7 +63,10 @@
         "price": 100.00
     },
     {
-        "title": "Portugal flight: BOS -> LIS",
+        "title": "European Vacation",
+        "description": "Flight: BOS -> LIS",
+        "country": "Portugal",
+        "town": "Lisbon",
         "category": "transportation",
         "transportationType": "airline",
         "startDate": "2025-06-15",
@@ -60,7 +76,10 @@
         "price": 1275.00
     },
     {
-        "title": "Portugal - day trip to Sintra",
+        "title": "European Vacation",
+        "description": "Day trip to Sintra",
+        "country": "Portugal",
+        "town": "Sintra",
         "category": "transportation",
         "transportationType": "train",
         "startDate": "2025-06-27",
@@ -70,7 +89,10 @@
         "price": 40.00
     },
     {
-        "title": "Portugal - Lisbon Hotel",
+        "title": "European Vacation",
+        "description": "Lisbon Hotel",
+        "country": "Portugal",
+        "town": "Lisbon",
         "category": "lodging",
         "transportationType": "",
         "startDate": "2025-06-15",
@@ -80,7 +102,10 @@
         "price": 2000.00
     },
     {
-        "title": "Portugal - Sintra Hotel",
+        "title": "European Vacation",
+        "description": "Sintra Hotel",
+        "country": "Portugal",
+        "town": "Sintra",
         "category": "lodging",
         "transportationType": "",
         "startDate": "2025-06-27",
@@ -90,7 +115,10 @@
         "price": 130.00
     },
     {
-        "title": "Portugul - Lisbon walking tour",
+        "title": "European Vacation",
+        "description": "Lisbon Walking Tour",
+        "country": "Portugal",
+        "town": "Lisbon",
         "category": "activity",
         "transportationType": "",
         "startDate": "2025-06-17",
@@ -100,7 +128,10 @@
         "price": 80.00
     },
     {
-        "title": "Portugal - Lisbon last dinner",
+        "title": "European Vacation",
+        "description": "Last dinner in Lisbon",
+        "country": "Portugal",
+        "town": "Lisbon",
         "category": "service",
         "transportationType": "",
         "startDate": "2025-06-26",
