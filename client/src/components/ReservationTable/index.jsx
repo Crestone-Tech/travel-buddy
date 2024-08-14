@@ -52,12 +52,12 @@ export default function ReservationTable() {
   );
 
   return (
-    <div>
+    <div className="buddyParent">
       {Object.keys(groupedReservations).map((title) => (
         <div key={title} className="reservation-group">
           <div className="total-budget">
             <strong>
-              Total Estimated Cost for "{title}": ${totalBudgets[title]}
+              Estimated Cost for "{title}": ${totalBudgets[title]}
             </strong>
           </div>
           <h2 className="trip-title">{title}</h2>

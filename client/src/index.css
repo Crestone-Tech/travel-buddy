@@ -11,6 +11,11 @@
   width: 100vw;
 }
 
+.buddyParent {
+  height: 70vh;
+  width: 100vw;
+}
+
 /* Header Component */
 header {
   display: flex;
