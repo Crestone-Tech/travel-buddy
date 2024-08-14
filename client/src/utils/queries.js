@@ -43,6 +43,8 @@ export const QUERY_ALL_RESERVATIONS = gql`
     getAllReservations {
       id
       title
+      town
+      country
       category
       description
       startDate

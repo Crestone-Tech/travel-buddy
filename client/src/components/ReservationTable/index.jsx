@@ -16,7 +16,7 @@ export default function ReservationTable() {
     return () => {
       document.body.removeChild(script);
     };
-  }, []);
+  });
 
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
   const reservations = data?.getAllReservations || [];
