@@ -124,7 +124,7 @@ const ReservationUpdateForm = (reservation, setReservationData) => {
           <TextField
             label="Provider"
             name="title"
-            value={formValues.title}
+            value={formValues.provider}
             onChange={handleChange}
             fullWidth
           />

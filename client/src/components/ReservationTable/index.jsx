@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import "./reservation-table.css";
+import ReservationUpdateForm from "../ReservationUpdateForm";
 import {
   QUERY_ALL_RESERVATIONS,
   DELETE_SINGLE_RESERVATION,
@@ -17,7 +18,11 @@ export default function ReservationTable() {
       document.body.removeChild(script);
     };
   });
-
+  const [reservationData, setReservationData] = useState({
+    title: "",
+    provider: "",
+    startDate: "",
+  });
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
   const reservations = data?.getAllReservations || [];
 
@@ -101,7 +106,11 @@ export default function ReservationTable() {
                   <td>{reservation.price}</td>
                   {/* <td>{reservation.priceCurrency}</td> */}
                   <td>
-                    <i className="fa fa-pencil" aria-hidden="true"></i>
+                    <i
+                      className="fa fa-pencil"
+                      aria-hidden="true"
+                      onClick={() => setReservationData(reservation)}
+                    ></i>
                   </td>
                   <td>
                     <i
@@ -114,6 +123,12 @@ export default function ReservationTable() {
               ))}
             </tbody>
           </table>
+          {reservationData.id && (
+            <ReservationUpdateForm
+              reservation={reservationData}
+              setReservationData={setReservationData}
+            />
+          )}
         </div>
       ))}
     </div>
