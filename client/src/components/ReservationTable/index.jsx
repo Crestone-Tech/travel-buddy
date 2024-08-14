@@ -27,7 +27,9 @@ export default function ReservationTable() {
     startDate: "",
   });
   const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
-  const [deleteReservation] = useMutation(DELETE_SINGLE_RESERVATION);
+  const [deleteReservation] = useMutation(DELETE_SINGLE_RESERVATION, {
+    refetchQueries: () => [{ query: QUERY_ALL_RESERVATIONS }],
+  });
   const reservations = data?.getAllReservations || [];
   // console.log("reservations", reservations);
 
