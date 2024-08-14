@@ -161,7 +161,7 @@ function EditReservationForm({
               }}
             />
           </div>
-          <input type="submit" name="Submit" />
+          
         </form>
       </Box>
     </>
