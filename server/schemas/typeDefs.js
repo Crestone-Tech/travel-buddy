@@ -45,6 +45,14 @@ const typeDefs = `
     user: User
   }
 
+
+  type Tribe {
+    id: ID!
+    name: String!
+    users: [User]
+  }
+
+
   type User {
     id: ID!
     firstName: String!
@@ -58,9 +66,13 @@ const typeDefs = `
     getAllReservations: [Reservation]
     getOneReservation(_id: ID!): Reservation
 
+
     users: [User]
     user(_id: ID!): User
     me: User
+
+    getTribe: Tribe
+
   }
 
   type Mutation {
@@ -98,8 +110,18 @@ const typeDefs = `
     deleteReservation(_id: ID!): ResponseFromDeletion
     
     
+
+    createUser(name: String!, email: String!, password: String!): Auth
+    removeUser: User
+    login(email: String!, password: String!): Auth
+
+    createTribe(
+      name: String!
+    ): Tribe
+
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Auth
     loginUser(username: String!, password: String!): Auth
+
   }
 `;
 

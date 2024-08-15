@@ -1,4 +1,4 @@
-const { User, Reservation } = require("../models");
+const { User, Reservation, Tribe } = require("../models");
 const { findByIdAndUpdate } = require("../models/Reservation");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const { ObjectId } = require("mongodb");
@@ -133,6 +133,20 @@ const resolvers = {
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
         return { token, user };
+      } catch (error) {
+        console.log(error);
+      }
+    },
+
+    createTribe: async (parent, args) => {
+      try {
+        let tribe = new Tribe({
+          args,
+          id: Math.floor(Math.random() * 1000).toString(),
+        });
+        await tribe.save();
+        console.log("New tribe saved");
+        return tribe;
       } catch (error) {
         console.log(error);
       }
