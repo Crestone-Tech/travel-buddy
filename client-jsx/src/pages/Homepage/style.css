@@ -1,0 +1,36 @@
+.homepage-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.text-container {
+  flex: 1;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  margin: 0;
+  max-width: 500px;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+  max-width: 500px;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.sky {
+  width: 100%;
+  height: auto;
+  border: 1px solid black;
+  object-fit: cover;
+}
