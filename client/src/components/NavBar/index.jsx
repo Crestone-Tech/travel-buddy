@@ -53,7 +53,6 @@ export default function NavBar() {
         <Toolbar
           sx={{
             height: "100%",
-            padding: "0 1rem",
             display: "flex",
             alignItems: "center",
             justifyContent: { xs: "space-between", md: "center" },
