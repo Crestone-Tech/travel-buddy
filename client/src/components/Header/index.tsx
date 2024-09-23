@@ -2,7 +2,7 @@ import travelbuddy from "../../assets/images/travelbuddy.png";
 
 import Auth from "../../utils/auth";
 
-export default function Header(props) {
+export default function Header() {
   return (
     <header>
       <img src={travelbuddy} alt="Logo" />
@@ -37,7 +37,6 @@ export default function Header(props) {
           </div>
         </ul>
       </nav>
-      {props.children}
     </header>
   );
 }
