@@ -1,7 +1,10 @@
-import React from "react";
+type FAQuestion = {
+  question: string;
+  answer: string;
+};
 
 export default function FAQ() {
-  const questions = [
+  const questions: FAQuestion[] = [
     {
       question: "What is Travel Buddy\u2122?",
       answer:
@@ -14,7 +17,8 @@ export default function FAQ() {
     },
     {
       question: "How should I use Travel Buddy?",
-      answer: "Gather your fellow travelers and create a Tribe. Brainstorm ideas, add links, and create a shared vision with the Envision Board. Once you know where you want to go and what type of vacation you'll take, use the Buddy Board to track all your plans, bookings, and logistics in one place.",
+      answer:
+        "Gather your fellow travelers and create a Tribe. Brainstorm ideas, add links, and create a shared vision with the Envision Board. Once you know where you want to go and what type of vacation you'll take, use the Buddy Board to track all your plans, bookings, and logistics in one place.",
     },
     {
       question: "Having Issues?",
@@ -26,7 +30,7 @@ export default function FAQ() {
     <div className="faq-container">
       <h2>Frequently Asked Questions</h2>
       <ul className="faq-list">
-        {questions.map((item, index) => (
+        {questions.map((item: FAQuestion, index: number) => (
           <li key={index} className="faq-item">
             <strong>{item.question}</strong>
             <p>{item.answer}</p>
