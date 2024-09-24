@@ -1,9 +1,8 @@
-import React from "react";
 import { useLocation } from "react-router-dom";
 import travelDreams from "../../assets/images/traveldreams.png";
 import cenote from "../../assets/images/cenote.png";
 
-export default function Hero(props) {
+export default function Hero() {
   const location = useLocation();
 
   if (location.pathname !== "/") {
