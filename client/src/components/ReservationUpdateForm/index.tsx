@@ -8,14 +8,31 @@ import {
   Typography,
 } from "@mui/material";
 
-const categories = [
+type ReservationFormState = {
+  startDate: Date;
+  title: string;
+  description: string;
+  category: string;
+  transportationType: string;
+  provider: string;
+  status: string;
+  price: number;
+  priceCurrency: string;
+};
+
+type ReservationUpdateFormProps = {
+  reservation: ReservationFormState;
+  setReservation: React.SetStateAction<ReservationFormState>;
+};
+
+const categories: string[] = [
   "Lodging",
   "Transportation",
   "Service",
   "Activity",
   "Other",
 ];
-const statuses = [
+const statuses: string[] = [
   "Idea",
   "Agreed",
   "Verbal Reservation",
@@ -25,7 +42,7 @@ const statuses = [
   "Arrange Onsite",
 ];
 
-const transportationTypes = [
+const transportationTypes: string[] = [
   "Taxi",
   "Personal Car",
   "Rental Car",
@@ -43,14 +60,24 @@ const transportationTypes = [
   "TBD",
 ];
 
-const ReservationUpdateForm = (reservation, setReservationData) => {
-  const [formValues, setFormValues] = useState({
-    startDate: "",
-    title: "",
-    description: "",
-  });
+const initialFormValue = {
+  startDate: new Date(),
+  title: "",
+  description: "",
+  category: "Lodging",
+  transportationType: "Taxi",
+  provider: "",
+  status: "Idea",
+  price: 0,
+  priceCurrency: "$",
+};
 
-  const handleChange = (e) => {
+const ReservationUpdateForm = ({ reservation }: ReservationUpdateFormProps) => {
+  const [formValues, setFormValues] = useState(initialFormValue);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormValues({
       ...reservation,
@@ -65,11 +92,7 @@ const ReservationUpdateForm = (reservation, setReservationData) => {
 
   const handleCancel = () => {
     // Handle cancel logic here
-    setFormValues({
-      startDate: "",
-      title: "",
-      description: "",
-    });
+    setFormValues(initialFormValue);
   };
 
   return (

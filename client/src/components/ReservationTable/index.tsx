@@ -1,11 +1,34 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import "./reservation-table.css";
-import ReservationUpdateForm from "../ReservationUpdateForm";
 import {
   QUERY_ALL_RESERVATIONS,
   DELETE_SINGLE_RESERVATION,
 } from "../../utils/queries";
+
+type Reservation = {
+  category: string;
+  country: string;
+  description: string;
+  endDate: Date;
+  id?: string;
+  price: number;
+  priceCurrency: string | null; // This is coming up null in testing, but we should nail this down to be something
+  provider: string;
+  startDate: Date;
+  status: string;
+  title: string;
+  town: string;
+  transportationType: string;
+};
+
+type ReservationReducerGroup = {
+  [title: string]: Reservation[];
+};
+
+type TotalsReducerTotal = {
+  [title: string]: number;
+};
 
 export default function ReservationTable() {
   useEffect(() => {
@@ -18,38 +41,50 @@ export default function ReservationTable() {
       document.body.removeChild(script);
     };
   });
+  // reservationData isn't being used now that the ReservationUpdateForm is
+  // commented out; this line is here to avoid hard errors from
+  // typescript appearing
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [reservationData, setReservationData] = useState({
     title: "",
     provider: "",
     startDate: "",
   });
-  const { loading, data } = useQuery(QUERY_ALL_RESERVATIONS);
+  const { data } = useQuery(QUERY_ALL_RESERVATIONS);
   const reservations = data?.getAllReservations || [];
 
   const [deleteReservation] = useMutation(DELETE_SINGLE_RESERVATION, {
     refetchQueries: () => [{ query: QUERY_ALL_RESERVATIONS }],
   });
-  function deleteHandler(reservationId) {
+  function deleteHandler(reservationId: string) {
     console.log("You called the deleteHandler to delete Id", reservationId);
     deleteReservation({ variables: { id: reservationId } });
   }
 
   // Group reservations by Trip Title
-  const groupedReservations = reservations.reduce((groups, reservation) => {
-    const title = reservation.title;
-    if (!groups[title]) {
-      groups[title] = [];
-    }
-    groups[title].push(reservation);
-    return groups;
-  }, {});
+  const groupedReservations = reservations.reduce(
+    (groups: ReservationReducerGroup, reservation: Reservation) => {
+      // console.log("GROUPS:", groups);
+      const title = reservation.title;
+      if (!groups[title]) {
+        groups[title] = [];
+      }
+      groups[title].push(reservation);
+      return groups;
+    },
+    {}
+  );
 
   // Calculate total budget for each Trip Title
   const totalBudgets = Object.keys(groupedReservations).reduce(
-    (totals, title) => {
-      const total = groupedReservations[title].reduce((sum, reservation) => {
-        return sum + (reservation.price || 0);
-      }, 0);
+    (totals: TotalsReducerTotal, title: string) => {
+      console.log("TOTALS:", totals);
+      const total = groupedReservations[title].reduce(
+        (sum: number, reservation: Reservation) => {
+          return sum + (reservation.price || 0);
+        },
+        0
+      );
       totals[title] = total;
       return totals;
     },
@@ -84,7 +119,7 @@ export default function ReservationTable() {
               </tr>
             </thead>
             <tbody>
-              {groupedReservations[title].map((reservation) => (
+              {groupedReservations[title].map((reservation: Reservation) => (
                 <tr
                   key={reservation.id}
                   className={
@@ -109,26 +144,33 @@ export default function ReservationTable() {
                     <i
                       className="fa fa-pencil"
                       aria-hidden="true"
-                      onClick={() => setReservationData(reservation)}
+                      onClick={() =>
+                        setReservationData({
+                          title: reservation.title,
+                          provider: reservation.provider,
+                          startDate: reservation.startDate.toString(),
+                        })
+                      }
                     ></i>
                   </td>
                   <td>
                     <i
                       className="fa fa-trash"
                       aria-hidden="true"
-                      onClick={() => deleteHandler(reservation.id)}
+                      onClick={() => deleteHandler(reservation.id as string)}
                     ></i>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          {reservationData.id && (
+          {/* It looks like this is unfinished, commenting out for the refactor */}
+          {/* {reservationData.id && (
             <ReservationUpdateForm
               reservation={reservationData}
               setReservationData={setReservationData}
             />
-          )}
+          )} */}
         </div>
       ))}
     </div>
