@@ -11,48 +11,54 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import tuktuk from "../../assets/images/tuktuk.jpg";
 
-export default function SignUp() {
-  const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
-  });
+type FormState = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+};
+const initialFormData: FormState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  message: "",
+};
 
+export default function Contact() {
+  const [formState, setFormState] = useState<FormState>(initialFormData);
   const [userMessage, setUserMessage] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormState({
       ...formState,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // TODO: Implement HandleSubmit functionality post refactor
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setUserMessage("Your message has been sent!");
-    setFormState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      message: "",
-    });
+    setFormState(initialFormData);
     setTimeout(() => {
       setUserMessage("");
     }, 3000);
   };
-
+  // TODO: Implment clear form function
   return (
-    <div style ={{
-        position: 'fixed',
+    <div
+      style={{
+        position: "fixed",
         backgroundImage: `url(${tuktuk})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         paddingTop: 10,
-        paddingBottom: 10, 
-        backgroundPosition: 'center',
-        height: '100%',
-        width: '100%'
+        paddingBottom: 10,
+        backgroundPosition: "center",
+        height: "100%",
+        width: "100%",
       }}
     >
       <Container component="main" maxWidth="xs">
