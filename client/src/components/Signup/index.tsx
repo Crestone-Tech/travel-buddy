@@ -7,33 +7,46 @@ import Auth from "../../utils/auth";
 
 import vietnam from "../../assets/images/vietnam.jpg";
 
+type SignupFormData = {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+const initialFormData = {
+  firstName: "",
+  lastName: "",
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+
 export default function Signup() {
-  const [formErrorMessage, setFormErrorMessage] = useState("");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [formErrorMessage, setFormErrorMessage] = useState<string>("");
+  const [formData, setFormData] = useState<SignupFormData>(initialFormData);
 
   // GraphQL mutation
   const [addUser] = useMutation(ADD_USER);
 
   const clearForm = () => {
     setFormErrorMessage("");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    setFormData(initialFormData);
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev: SignupFormData) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormErrorMessage("");
 
@@ -70,8 +83,8 @@ export default function Signup() {
       Auth.login(data.addUser.token);
 
       return redirect("/");
-    } catch (error) {
-      if (error.essage) {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
         setFormErrorMessage(error.message);
         console.error("error:", error);
       }
@@ -102,12 +115,7 @@ export default function Signup() {
             name="firstName"
             placeholder="Enter your first name"
             value={formData.firstName}
-            onChange={(event) =>
-              setFormData((prev) => ({
-                ...prev,
-                firstName: event.target.value,
-              }))
-            }
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -120,12 +128,7 @@ export default function Signup() {
             name="lastName"
             placeholder="Enter your last name"
             value={formData.lastName}
-            onChange={(event) =>
-              setFormData((prev) => ({
-                ...prev,
-                lastName: event.target.value,
-              }))
-            }
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -138,12 +141,7 @@ export default function Signup() {
             name="username"
             placeholder="Enter your username"
             value={formData.username}
-            onChange={(event) =>
-              setFormData((prev) => ({
-                ...prev,
-                username: event.target.value,
-              }))
-            }
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -156,12 +154,7 @@ export default function Signup() {
             name="email"
             placeholder="Enter your email"
             value={formData.email}
-            onChange={(event) =>
-              setFormData((prev) => ({
-                ...prev,
-                email: event.target.value,
-              }))
-            }
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -174,12 +167,7 @@ export default function Signup() {
             name="password"
             placeholder="Enter your password"
             value={formData.password}
-            onChange={(event) =>
-              setFormData((prev) => ({
-                ...prev,
-                password: event.target.value,
-              }))
-            }
+            onChange={handleInputChange}
             required
           />
         </label>
@@ -195,12 +183,7 @@ export default function Signup() {
             name="confirmPassword"
             placeholder="Confirm your password"
             value={formData.confirmPassword}
-            onChange={(event) =>
-              setFormData((prev) => ({
-                ...prev,
-                confirmPassword: event.target.value,
-              }))
-            }
+            onChange={handleInputChange}
             required
           />
         </label>
