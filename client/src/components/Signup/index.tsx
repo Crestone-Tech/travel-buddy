@@ -7,16 +7,7 @@ import Auth from "../../utils/auth";
 
 import vietnam from "../../assets/images/vietnam.jpg";
 
-type SignupFormData = {
-  firstName: string;
-  lastName: string;
-  username: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
-
-const initialFormData = {
+const initialFormData: SignupFormData = {
   firstName: "",
   lastName: "",
   username: "",
