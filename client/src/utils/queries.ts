@@ -1,10 +1,10 @@
 // PURPOSE: to hold the queries for the application
 
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
 ///////////// USERS ///////////
 // QUERY_USERS query
-export const QUERY_USERS = gql`
+export const QUERY_USERS: DocumentNode = gql`
   query users {
     users {
       _id
@@ -15,7 +15,7 @@ export const QUERY_USERS = gql`
 `;
 
 // QUERY_SINGLE_USER query
-export const QUERY_SINGLE_USER = gql`
+export const QUERY_SINGLE_USER: DocumentNode = gql`
   query user($_id: String) {
     user(_id: $_id) {
       _id
@@ -26,7 +26,7 @@ export const QUERY_SINGLE_USER = gql`
 `;
 
 // QUERY_ME query
-export const QUERY_ME = gql`
+export const QUERY_ME: DocumentNode = gql`
   query me {
     me {
       _id
@@ -38,7 +38,7 @@ export const QUERY_ME = gql`
 
 ///////// RESERVATIONS ///////////
 // QUERY_ALL_RESERVATIONS
-export const QUERY_ALL_RESERVATIONS = gql`
+export const QUERY_ALL_RESERVATIONS: DocumentNode = gql`
   query GetAllReservations {
     getAllReservations {
       id
@@ -59,7 +59,7 @@ export const QUERY_ALL_RESERVATIONS = gql`
 `;
 
 // DELETE_SINGLE_RESERVATION query
-export const DELETE_SINGLE_RESERVATION = gql`
+export const DELETE_SINGLE_RESERVATION: DocumentNode = gql`
   mutation deleteReservation($id: ID!) {
     deleteReservation(_id: $id) {
       acknowledged
