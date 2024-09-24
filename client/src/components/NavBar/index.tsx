@@ -1,3 +1,8 @@
+type NavItem = {
+  label: string;
+  path: string;
+};
+
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
@@ -16,7 +21,7 @@ export default function NavBar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { label: "Home", path: "/" },
     { label: "Envision", path: "/Envision" },
     { label: "Buddy\u2122", path: "/Buddy" },
@@ -29,9 +34,8 @@ export default function NavBar() {
   const drawerList = (
     <Box sx={{ width: 250 }}>
       <List>
-        {navItems.map((item) => (
+        {navItems.map((item: NavItem) => (
           <ListItem
-            button
             key={item.label}
             component={Link}
             to={item.path}
