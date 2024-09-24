@@ -1,9 +1,9 @@
 // PURPOSE: to hold the mutations for the application
 
-import { gql } from "@apollo/client";
+import { DocumentNode, gql } from "@apollo/client";
 
 // ADD_USER mutation
-export const ADD_USER = gql`
+export const ADD_USER: DocumentNode = gql`
   mutation AddUser(
     $firstName: String!
     $lastName: String!
@@ -30,7 +30,7 @@ export const ADD_USER = gql`
 `;
 
 // LOGIN_USER mutation
-export const LOGIN_USER = gql`
+export const LOGIN_USER: DocumentNode = gql`
   mutation LoginUser($username: String!, $password: String!) {
     loginUser(username: $username, password: $password) {
       user {
