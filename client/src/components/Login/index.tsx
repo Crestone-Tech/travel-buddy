@@ -7,9 +7,21 @@ import Auth from "../../utils/auth";
 
 import switz from "../../assets/images/switz.jpg";
 
+type FormData = {
+  username: string;
+  password: string;
+};
+
+// type LoginData = {
+//   loginUser: {
+//     username: string;
+//     password: string;
+//   };
+// };
+
 export default function Login() {
   const [formErrorMessage, setFormErrorMessage] = useState("");
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     username: "",
     password: "",
   });
@@ -25,7 +37,7 @@ export default function Login() {
     });
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFormErrorMessage("");
 
@@ -39,14 +51,14 @@ export default function Login() {
         },
       });
       console.log("data", data);
-      const { user, token } = data?.loginUser || {};
+      const { token } = data?.loginUser || {};
       console.log("LOGIN_USER data: ", data);
       if (token) {
         Auth.login(token);
         return redirect("/");
       }
-    } catch (error) {
-      if (error.message) {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
         setFormErrorMessage(error.message);
         console.log("error:", error);
       }
