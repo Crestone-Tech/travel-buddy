@@ -1,4 +1,3 @@
-import React from "react";
 import sky from "../../assets/images/sky.jpg";
 import "./style.css";
 
@@ -11,12 +10,13 @@ export default function Homepage() {
           vacation.
         </h1>
         <p className="description text-base md:text-lg lg:text-xl text-center lg:text-left">
-          Travel Buddy helps you organize the dream vacation you've always wanted. 
-          Envision a trip with an easy to use and collaborative
-          whiteboard and plan together in real-time. Manage tribes of traveling companions
-          and view the trips you've planned.
-          You can even track reservations with our Buddy board to help you manage all your trip 
-          logistics. Travel Buddy has everything you need to make your vacation a success!
+          Travel Buddy helps you organize the dream vacation you've always
+          wanted. Envision a trip with an easy to use and collaborative
+          whiteboard and plan together in real-time. Manage tribes of traveling
+          companions and view the trips you've planned. You can even track
+          reservations with our Buddy board to help you manage all your trip
+          logistics. Travel Buddy has everything you need to make your vacation
+          a success!
         </p>
       </div>
       <div className="image-container flex-1 w-full mt-6 lg:mt-0 lg:w-auto py-6 px-12">
