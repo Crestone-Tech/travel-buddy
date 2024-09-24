@@ -8,23 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 
-type ReservationFormState = {
-  startDate: Date;
-  title: string;
-  description: string;
-  category: string;
-  transportationType: string;
-  provider: string;
-  status: string;
-  price: number;
-  priceCurrency: string;
-};
-
-type ReservationUpdateFormProps = {
-  reservation: ReservationFormState;
-  setReservation: React.SetStateAction<ReservationFormState>;
-};
-
 const categories: string[] = [
   "Lodging",
   "Transportation",
@@ -60,7 +43,7 @@ const transportationTypes: string[] = [
   "TBD",
 ];
 
-const initialFormValue = {
+const initialFormValue: ReservationFormData = {
   startDate: new Date(),
   title: "",
   description: "",

@@ -1,8 +1,3 @@
-type FAQuestion = {
-  question: string;
-  answer: string;
-};
-
 export default function FAQ() {
   const questions: FAQuestion[] = [
     {

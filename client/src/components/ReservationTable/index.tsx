@@ -6,30 +6,6 @@ import {
   DELETE_SINGLE_RESERVATION,
 } from "../../utils/queries";
 
-type Reservation = {
-  category: string;
-  country: string;
-  description: string;
-  endDate: Date;
-  id?: string;
-  price: number;
-  priceCurrency: string | null; // This is coming up null in testing, but we should nail this down to be something
-  provider: string;
-  startDate: Date;
-  status: string;
-  title: string;
-  town: string;
-  transportationType: string;
-};
-
-type ReservationReducerGroup = {
-  [title: string]: Reservation[];
-};
-
-type TotalsReducerTotal = {
-  [title: string]: number;
-};
-
 export default function ReservationTable() {
   useEffect(() => {
     const script = document.createElement("script");
@@ -77,7 +53,7 @@ export default function ReservationTable() {
 
   // Calculate total budget for each Trip Title
   const totalBudgets = Object.keys(groupedReservations).reduce(
-    (totals: TotalsReducerTotal, title: string) => {
+    (totals: ReservationTotalsReducerTotal, title: string) => {
       console.log("TOTALS:", totals);
       const total = groupedReservations[title].reduce(
         (sum: number, reservation: Reservation) => {
