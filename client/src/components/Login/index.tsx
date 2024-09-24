@@ -7,11 +7,7 @@ import Auth from "../../utils/auth";
 
 import switz from "../../assets/images/switz.jpg";
 
-type FormData = {
-  username: string;
-  password: string;
-};
-
+// Might be necessary with mutations in future
 // type LoginData = {
 //   loginUser: {
 //     username: string;
@@ -21,7 +17,7 @@ type FormData = {
 
 export default function Login() {
   const [formErrorMessage, setFormErrorMessage] = useState("");
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<LoginFormData>({
     username: "",
     password: "",
   });

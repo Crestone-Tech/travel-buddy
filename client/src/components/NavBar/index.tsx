@@ -1,8 +1,3 @@
-type NavItem = {
-  label: string;
-  path: string;
-};
-
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
