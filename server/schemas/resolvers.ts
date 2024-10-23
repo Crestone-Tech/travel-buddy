@@ -1,11 +1,8 @@
-const { User, Reservation, Tribe } = require("../models");
-const { findByIdAndUpdate } = require("../models/Reservation");
-const { signToken, AuthenticationError } = require("../utils/auth");
-const { ObjectId } = require("mongodb");
-
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+import { HydratedDocument } from "mongoose";
+import { User, Reservation, Tribe } from "../models";
+import { AuthenticationError } from "../utils/auth";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 const resolvers = {
   Query: {
@@ -16,7 +13,7 @@ const resolvers = {
     },
 
     // get one reservation
-    getOneReservation: async (parent, { _id }) => {
+    getOneReservation: async (_: IReservation, { _id }: QueryByIdArgs) => {
       return Reservation.findOne({ _id });
     },
 
@@ -27,12 +24,12 @@ const resolvers = {
     },
 
     // get a user by id
-    user: async (parent, { _id }) => {
+    user: async (_: IUser, { _id }: QueryByIdArgs) => {
       return User.findOne({ _id: _id });
     },
 
     // retrieve user without specifically searching by id
-    me: async (parent, args, context) => {
+    me: async (_: IUser, __: QueryUsersArgs, context: QueryUsersContext) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
       }
@@ -43,13 +40,16 @@ const resolvers = {
   Mutation: {
     ////////////// RESERVATIONS
     //creates a reservation. See Model for required fields.
-    createReservation: async (parent, args) => {
+    createReservation: async (_: IReservation, args: IReservation) => {
       const reservation = await Reservation.create(args);
       return reservation;
     },
 
     // updates any/all fields in a reservation (except for _id)
-    updateReservation: async (parent, args) => {
+    updateReservation: async (
+      _: IReservation,
+      args: HydratedDocument<IReservation>
+    ) => {
       try {
         if (!args._id) {
           throw new Error("Reservation ID is required");
@@ -75,7 +75,7 @@ const resolvers = {
     // Returns
     //  1: reseration deleted
     //  0: reservation not found, not deleted
-    deleteReservation: async (parent, { _id }) => {
+    deleteReservation: async (_: IReservation, { _id }: QueryByIdArgs) => {
       try {
         if (!_id) {
           throw new Error("Reservation ID is required");
@@ -91,7 +91,7 @@ const resolvers = {
     },
 
     //////////////////// USERS AND AUTH
-    addUser: async (parent, args) => {
+    addUser: async (_: IUser, args: IUser) => {
       try {
         const { firstName, lastName, username, email, password } = args;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -106,6 +106,7 @@ const resolvers = {
 
         await user.save();
 
+        // TODO: Provide typing to .env variables
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
         return { token, user };
@@ -116,7 +117,7 @@ const resolvers = {
       }
     },
 
-    loginUser: async (parent, { username, password }) => {
+    loginUser: async (_: IUser, { username, password }: QueryLoginArgs) => {
       try {
         const user = await User.findOne({ username });
 
@@ -130,6 +131,7 @@ const resolvers = {
           throw new Error("Incorrect password");
         }
 
+        // TODO: Provide typing to .env variables
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
         return { token, user };
@@ -138,11 +140,10 @@ const resolvers = {
       }
     },
 
-    createTribe: async (parent, args) => {
+    createTribe: async (_: ITribe, args: ITribe) => {
       try {
         let tribe = new Tribe({
           args,
-          id: Math.floor(Math.random() * 1000).toString(),
         });
         await tribe.save();
         console.log("New tribe saved");
@@ -154,4 +155,4 @@ const resolvers = {
   },
 };
 
-module.exports = resolvers;
+export default resolvers;

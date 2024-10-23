@@ -1,9 +1,9 @@
-const db = require("../config/connection");
-const { User, Reservation } = require("../models");
-const cleanDB = require("./cleanDB");
+import db from "../config/connection";
+import { User, Reservation } from "../models";
+import cleanDB from "./cleanDB";
 
-const userData = require("./userData.json");
-const reservationData = require("./reservationData.json");
+import userData from "./userData.json";
+import reservationData from "./reservationData.json";
 
 db.once("open", async () => {
   await cleanDB("User", "users");

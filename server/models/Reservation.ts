@@ -1,6 +1,6 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const reservationSchema = new Schema({
+const reservationSchema = new Schema<IReservation>({
   title: {
     type: String,
     required: true,
@@ -42,6 +42,6 @@ const reservationSchema = new Schema({
   },
 });
 
-const Reservation = model("Reservation", reservationSchema);
+const Reservation = model<IReservation>("Reservation", reservationSchema);
 
-module.exports = Reservation;
+export default Reservation;
