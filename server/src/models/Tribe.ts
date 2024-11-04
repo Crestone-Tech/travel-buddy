@@ -1,6 +1,16 @@
 import { Schema, model } from "mongoose";
 import User from "./User";
 
+export type ITribeMember = {
+  firstName: string;
+  lastName: string;
+};
+
+export type ITribe = {
+  name: string;
+  members: ITribeMember[];
+};
+
 const tribeSchema = new Schema<ITribe>({
   name: {
     type: String,

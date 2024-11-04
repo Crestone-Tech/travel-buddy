@@ -3,6 +3,27 @@ import { User, Reservation, Tribe } from "../models";
 import { AuthenticationError } from "../utils/auth";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { IReservation } from "../models/Reservation";
+import { IUser } from "../models/User";
+import { ITribe } from "../models/Tribe";
+import { BaseContext } from "@apollo/server";
+
+export type QueryByIdArgs = {
+  _id: string;
+};
+
+export type QueryUsersArgs = {
+  limit?: number;
+};
+
+export interface QueryUsersContext extends BaseContext {
+  user?: HydratedDocument<IUser>;
+}
+
+export type QueryLoginArgs = {
+  username: string;
+  password: string;
+};
 
 const resolvers = {
   Query: {
@@ -107,7 +128,10 @@ const resolvers = {
         await user.save();
 
         // TODO: Provide typing to .env variables
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+        const token = jwt.sign(
+          { userId: user._id },
+          process.env.JWT_SECRET as string
+        );
 
         return { token, user };
       } catch (error) {
@@ -132,7 +156,10 @@ const resolvers = {
         }
 
         // TODO: Provide typing to .env variables
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+        const token = jwt.sign(
+          { userId: user._id },
+          process.env.JWT_SECRET as string
+        );
 
         return { token, user };
       } catch (error) {

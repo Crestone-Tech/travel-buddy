@@ -4,6 +4,8 @@
 import { NextFunction, Request, Response } from "express";
 import { GraphQLError } from "graphql";
 import jwt from "jsonwebtoken";
+import User, { IUser } from "../models/User";
+import { HydratedDocument, ObjectId } from "mongoose";
 
 // CONSTs
 const secret = "secret_travel_buddy"; // secret key
@@ -19,9 +21,13 @@ export const AuthenticationError = new GraphQLError(
   }
 );
 
+export interface AuthRequest extends Request {
+  user?: IUser | HydratedDocument<IUser>;
+}
+
 // auth middleware function
 export function authMiddleware(
-  req: Request,
+  req: AuthRequest,
   res: Response,
   next: NextFunction
 ) {
@@ -40,8 +46,14 @@ export function authMiddleware(
 
   // verify token
   try {
-    const { data } = jwt.verify(token, secret, { maxAge: expiration });
-    req.user = data;
+    const { sub } = jwt.verify(token, secret, { maxAge: expiration });
+    User.findById(sub).then((user) => {
+      if (user) {
+        req.user = user;
+      } else {
+        throw new Error("Invalid user");
+      }
+    });
   } catch {
     console.log("Invalid token");
     return res.status(400).json({ message: "invalid token!" });
@@ -50,8 +62,14 @@ export function authMiddleware(
   // next middleware
   next();
 }
+
+export type SignTokenParams = {
+  username: string;
+  email: string;
+  _id: string | ObjectId;
+};
 // sign token function
-export function signToken({ username, email, _id }) {
+export function signToken({ username, email, _id }: SignTokenParams) {
   const payload = { username, email, _id };
 
   // return jwt token with payload, secret, and expiration

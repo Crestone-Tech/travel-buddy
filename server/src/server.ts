@@ -6,7 +6,7 @@ import path from "path";
 import { typeDefs, resolvers } from "./schemas";
 import db from "./config/connection";
 
-const PORT: number = process.env.PORT;
+const PORT: number = process.env.PORT ? Number(process.env.PORT) : 3001;
 const app = express();
 const server = new ApolloServer({
   typeDefs,
