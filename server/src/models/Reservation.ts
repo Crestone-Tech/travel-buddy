@@ -1,6 +1,21 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const reservationSchema = new Schema({
+export type IReservation = {
+  title: string;
+  category: string;
+  description: string;
+  country: string;
+  town: string;
+  startDate: Date;
+  endDate: Date;
+  status: string;
+  provider: string;
+  transportationType: string;
+  price: number;
+  priceCurrency: string;
+};
+
+const reservationSchema = new Schema<IReservation>({
   title: {
     type: String,
     required: true,
@@ -42,6 +57,6 @@ const reservationSchema = new Schema({
   },
 });
 
-const Reservation = model("Reservation", reservationSchema);
+const Reservation = model<IReservation>("Reservation", reservationSchema);
 
-module.exports = Reservation;
+export default Reservation;
